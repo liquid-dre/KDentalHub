@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" http://localhost:3000)",
+      "Bash(npm install:*)"
+    ],
+    "additionalDirectories": [
+      "/Users/andredingiswayo/.claude/projects/-Users-andredingiswayo-Documents-Code-Next-Js-Projects-KDentalHub"
+    ]
+  }
+}
