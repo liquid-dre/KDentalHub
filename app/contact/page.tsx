@@ -22,7 +22,7 @@ export default function ContactPage() {
   );
 
   return (
-    <section className="min-h-screen bg-[#F0F8FF] flex flex-col">
+    <section className="min-h-screen bg-[#F0F8FF] flex flex-col overflow-y-auto">
       {/* Back nav */}
       <div className="p-4 md:p-6">
         <Link
@@ -46,8 +46,8 @@ export default function ContactPage() {
       </div>
 
       {/* Form */}
-      <div className="flex-1 flex items-center justify-center p-4 pb-12">
-        <div className="w-full max-w-6xl shadow-xl flex flex-col-reverse lg:flex-row rounded-2xl overflow-hidden">
+      <div className="flex-1 flex items-start justify-center p-4 pb-24 pt-4 lg:pt-8">
+        <div className="w-full max-w-6xl shadow-xl flex flex-col-reverse lg:flex-row rounded-2xl overflow-visible">
           <Form
             selected={selected}
             setSelected={setSelected}

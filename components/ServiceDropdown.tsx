@@ -1,9 +1,36 @@
 "use client";
 
 import { FiChevronDown } from "react-icons/fi";
+import {
+  ShieldCheck,
+  Syringe,
+  Scissors,
+  Sparkles,
+  Smile,
+  Crown,
+  Stethoscope,
+  Scan,
+  Heart,
+  Brush,
+  MessageCircleQuestion,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { SERVICES, type ServiceName } from "@/components/services/services";
+
+const SERVICE_ICONS: Record<ServiceName, React.ReactNode> = {
+  "Cavity Protection": <ShieldCheck size={16} />,
+  "Root Canal Treatment": <Syringe size={16} />,
+  "Oral Surgery": <Scissors size={16} />,
+  "Teeth Whitening": <Sparkles size={16} />,
+  "Teeth Straightening": <Smile size={16} />,
+  "Dental Implant": <Crown size={16} />,
+  "Dental Checkup": <Stethoscope size={16} />,
+  "Dental X-Ray": <Scan size={16} />,
+  "Pediatric Dentistry": <Heart size={16} />,
+  "Deep Cleaning": <Brush size={16} />,
+  "General Enquiry": <MessageCircleQuestion size={16} />,
+};
 
 export default function ServiceDropdown({
   selected,
@@ -24,8 +51,9 @@ export default function ServiceDropdown({
         className={`flex items-center justify-between gap-2 px-3 py-2 rounded-md w-full text-left transition-colors duration-[750ms] ${colorClass}`}
       >
         <span
-          className={`text-sm ${selected ? "text-white" : "text-white/70"}`}
+          className={`text-sm flex items-center gap-2 ${selected ? "text-white" : "text-white/70"}`}
         >
+          {selected && SERVICE_ICONS[selected]}
           {selected || "Select a service..."}
         </span>
         <motion.span variants={iconVariants} className="text-white/70">
@@ -43,6 +71,7 @@ export default function ServiceDropdown({
           <Option
             key={service}
             text={service}
+            icon={SERVICE_ICONS[service]}
             setOpen={setOpen}
             onSelect={() => setSelected(service)}
             isSelected={selected === service}
@@ -55,11 +84,13 @@ export default function ServiceDropdown({
 
 function Option({
   text,
+  icon,
   setOpen,
   onSelect,
   isSelected,
 }: {
   text: string;
+  icon: React.ReactNode;
   setOpen: Dispatch<SetStateAction<boolean>>;
   onSelect: () => void;
   isSelected: boolean;
@@ -77,21 +108,7 @@ function Option({
           : "text-slate-700 hover:text-indigo-500"
       }`}
     >
-      <motion.span variants={actionIconVariants}>
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-          {isSelected && <polyline points="22 4 12 14.01 9 11.01" />}
-        </svg>
-      </motion.span>
+      <motion.span variants={actionIconVariants}>{icon}</motion.span>
       <span>{text}</span>
     </motion.li>
   );

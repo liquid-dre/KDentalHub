@@ -9,6 +9,7 @@ export const SERVICES = [
   "Dental X-Ray",
   "Pediatric Dentistry",
   "Deep Cleaning",
+  "General Enquiry",
 ] as const;
 
 export type ServiceName = (typeof SERVICES)[number];
