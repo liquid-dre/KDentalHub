@@ -174,7 +174,7 @@ export default function ServicesGrid() {
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Read More
+											Enquire About Service
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>
@@ -216,7 +216,7 @@ export default function ServicesGrid() {
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Read More
+											Enquire About Service
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>
@@ -275,7 +275,7 @@ export default function ServicesGrid() {
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Read More
+											Enquire About Service
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>
@@ -317,7 +317,7 @@ export default function ServicesGrid() {
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Read More
+											Enquire About Service
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>
