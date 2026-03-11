@@ -261,58 +261,40 @@ export default function ServicesCarousel() {
 						{/* Client avatars */}
 						<div className="flex items-center gap-4 mt-12">
 							<div className="flex -space-x-3">
-								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-[#E8F5E9] overflow-hidden flex items-center justify-center">
+								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white overflow-hidden flex items-center justify-center">
 									<svg
-										className="w-6 h-6 text-[#4CAF50]"
+										className="w-7 h-7"
 										viewBox="0 0 24 24"
 										fill="none"
 									>
-										<circle
-											cx="12"
-											cy="8"
-											r="4"
-											fill="currentColor"
-										/>
-										<path
-											d="M4 20c0-4.42 3.58-8 8-8s8 3.58 8 8"
-											fill="currentColor"
-										/>
+										<circle cx="9" cy="7" r="3" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M2 19c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+										<circle cx="16" cy="9" r="2.5" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M16 13.5c2.76 0 5 2.24 5 5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
 									</svg>
 								</div>
-								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-[#E3F2FD] overflow-hidden flex items-center justify-center">
+								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white overflow-hidden flex items-center justify-center">
 									<svg
-										className="w-6 h-6 text-[#2196F3]"
+										className="w-7 h-7"
 										viewBox="0 0 24 24"
 										fill="none"
 									>
-										<circle
-											cx="12"
-											cy="8"
-											r="4"
-											fill="currentColor"
-										/>
-										<path
-											d="M4 20c0-4.42 3.58-8 8-8s8 3.58 8 8"
-											fill="currentColor"
-										/>
+										<circle cx="9" cy="7" r="3" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M2 19c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+										<circle cx="16" cy="9" r="2.5" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M16 13.5c2.76 0 5 2.24 5 5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
 									</svg>
 								</div>
-								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-[#FFF3E0] overflow-hidden flex items-center justify-center">
+								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white overflow-hidden flex items-center justify-center">
 									<svg
-										className="w-6 h-6 text-[#FF9800]"
+										className="w-7 h-7"
 										viewBox="0 0 24 24"
 										fill="none"
 									>
-										<circle
-											cx="12"
-											cy="8"
-											r="4"
-											fill="currentColor"
-										/>
-										<path
-											d="M4 20c0-4.42 3.58-8 8-8s8 3.58 8 8"
-											fill="currentColor"
-										/>
+										<circle cx="9" cy="7" r="3" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M2 19c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+										<circle cx="16" cy="9" r="2.5" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M16 13.5c2.76 0 5 2.24 5 5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
 									</svg>
 								</div>
 							</div>
