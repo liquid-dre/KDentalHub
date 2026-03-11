@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#' },
-  { label: 'About', href: '#about-us' },
-  { label: 'Services', href: '#services' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/#about-us' },
+  { label: 'Services', href: '/services' },
+  { label: 'Testimonials', href: '/#testimonials' },
+  { label: 'FAQ', href: '/#faq' },
 ]
 
 export default function Navbar() {

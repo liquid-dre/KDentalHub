@@ -269,17 +269,27 @@ export default function ServicesCarousel() {
 							to create a comfortable and welcoming environment for each
 							patient.
 						</p>
-						<RoundedSlideButton
-							href={`/booking?service=${encodeURIComponent(SERVICE_SHOWCASE[selectedService].title)}`}
-							initialBg="#ffffff"
-							initialText="#000000"
-							hoverBg="var(--brand-blue)"
-							hoverText="#000000"
-							hoverScale={1.15}
-						>
-							<span>Book Appointment</span>
-							<ArrowRight className="w-4 h-4" />
-						</RoundedSlideButton>
+						<div className="flex flex-col sm:flex-row gap-3">
+							<RoundedSlideButton
+								href={`/booking?service=${encodeURIComponent(SERVICE_SHOWCASE[selectedService].title)}`}
+								initialBg="#ffffff"
+								initialText="#000000"
+								hoverBg="var(--brand-blue)"
+								hoverText="#000000"
+								hoverScale={1.15}
+							>
+								<span>Book Appointment</span>
+								<ArrowRight className="w-4 h-4" />
+							</RoundedSlideButton>
+
+							<a
+								href="/services"
+								className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-[#1a1a1a]/20 text-sm font-semibold text-[#1a1a1a] hover:border-[#1a1a1a]/40 hover:bg-white/50 active:scale-95 transition-all duration-200"
+							>
+								<span>View All Services</span>
+								<ArrowRight className="w-4 h-4" />
+							</a>
+						</div>
 
 						{/* Client avatars */}
 						<div className="flex items-center gap-4 mt-12">
