@@ -115,10 +115,10 @@ export default function Footer() {
         </div>
 
         {/* Large brand text at bottom, clipped */}
-        <div className="mt-12 lg:mt-16 overflow-hidden" style={{ height: 'clamp(100px, 15vw, 180px)' }}>
+        <div className="mt-12 lg:mt-16 overflow-hidden" style={{ height: 'clamp(80px, 12vw, 150px)' }}>
           <span
             className="block font-bold text-white/[0.07] leading-none whitespace-nowrap select-none"
-            style={{ fontSize: 'clamp(120px, 18vw, 240px)' }}
+            style={{ fontSize: 'clamp(90px, 13vw, 180px)' }}
           >
             K Dental Hub
           </span>
