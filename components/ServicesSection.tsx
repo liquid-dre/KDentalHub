@@ -329,6 +329,105 @@ export default function ServicesSection() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
+          SERVICES CONTINUATION — Our Works
+      ════════════════════════════════════════════════════════════════ */}
+      <section className="bg-[#D6E9D7] py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 xl:px-12">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            {/* Left column — text + CTA */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <p className="flex items-center gap-3 text-[13px] text-[#555] mb-8">
+                <span className="font-medium">(our works)</span>
+                <span className="block w-16 h-px bg-[#555]" />
+              </p>
+              <p className="text-[15px] text-[#444] leading-relaxed mb-8 max-w-sm">
+                Our team of skilled and experienced dental professionals strives to create a comfortable and welcoming environment for each patient.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#1a1a1a] text-white text-sm font-semibold hover:bg-[#333] active:scale-[0.98] transition-all duration-200"
+              >
+                Book Appointment
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              {/* Member avatars */}
+              <div className="flex items-center gap-4 mt-12">
+                <div className="flex -space-x-3">
+                  <div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white/60 overflow-hidden">
+                    <svg className="w-full h-full text-[#bbb]" viewBox="0 0 44 44" fill="none">
+                      <circle cx="22" cy="18" r="8" stroke="currentColor" strokeWidth="1.5"/>
+                      <path d="M6 40c0-8.84 7.16-16 16-16s16 7.16 16 16" stroke="currentColor" strokeWidth="1.5"/>
+                    </svg>
+                  </div>
+                  <div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white/60 overflow-hidden">
+                    <svg className="w-full h-full text-[#bbb]" viewBox="0 0 44 44" fill="none">
+                      <circle cx="22" cy="18" r="8" stroke="currentColor" strokeWidth="1.5"/>
+                      <path d="M6 40c0-8.84 7.16-16 16-16s16 7.16 16 16" stroke="currentColor" strokeWidth="1.5"/>
+                    </svg>
+                  </div>
+                  <div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-[#8B6E5B] overflow-hidden flex items-center justify-center">
+                    <svg className="w-full h-full text-white/70" viewBox="0 0 44 44" fill="none">
+                      <circle cx="22" cy="18" r="8" stroke="currentColor" strokeWidth="1.5"/>
+                      <path d="M6 40c0-8.84 7.16-16 16-16s16 7.16 16 16" stroke="currentColor" strokeWidth="1.5"/>
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-[#1a1a1a]">10K+ happy</p>
+                  <p className="text-sm font-bold text-[#1a1a1a]">members</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right column — service image cards */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="group"
+              >
+                <div className="rounded-3xl overflow-hidden mb-4 aspect-[4/5]">
+                  <img
+                    src="https://images.pexels.com/photos/3845766/pexels-photo-3845766.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="Teeth Straightening"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">Teeth Straightening</h3>
+                <p className="text-sm text-[#666]">Improve your smile with cleaning.</p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="group"
+              >
+                <div className="rounded-3xl overflow-hidden mb-4 aspect-[4/5]">
+                  <img
+                    src="https://images.pexels.com/photos/6627573/pexels-photo-6627573.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="Dental Implant"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">Dental Implant</h3>
+                <p className="text-sm text-[#666]">Improve your smile with cleaning.</p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════
           WHY CHOOSE US
       ════════════════════════════════════════════════════════════════ */}
       <section id="why" className="bg-white py-24 lg:py-32">
