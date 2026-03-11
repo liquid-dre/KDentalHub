@@ -84,19 +84,18 @@ export default function Navbar() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // When over dark bg: light glass overlay, black text
-  // When over light bg: dark glass overlay, white text
+  // When over dark bg: light glass overlay, white text
+  // When over light bg: dark glass overlay, black text
   const glassClass = isDarkBg ? 'liquid-glass-light' : 'liquid-glass-dark'
-  const textColor = isDarkBg ? 'text-gray-900' : 'text-white'
-  const textMuted = isDarkBg ? 'text-gray-700' : 'text-white/80'
-  const textHover = isDarkBg ? 'hover:text-gray-900' : 'hover:text-white'
-  const hoverBg = isDarkBg ? 'hover:bg-black/5' : 'hover:bg-white/10'
-  const activeTabBg = isDarkBg ? 'bg-white/80 text-gray-900 shadow-sm' : 'bg-white/90 text-gray-900 shadow-sm'
+  const textMuted = isDarkBg ? 'text-white/80' : 'text-black/70'
+  const textHover = isDarkBg ? 'hover:text-white' : 'hover:text-black'
+  const hoverBg = isDarkBg ? 'hover:bg-white/10' : 'hover:bg-black/5'
+  const activeTabBg = 'bg-[#4d9de0] text-white shadow-sm'
   const callBtnClass = isDarkBg
-    ? 'bg-gray-900/90 text-white hover:bg-gray-900 shadow-md hover:shadow-lg'
-    : 'bg-white/90 text-gray-900 hover:bg-white shadow-md hover:shadow-lg'
-  const logoColor = isDarkBg ? 'text-gray-900' : 'text-white'
-  const mobileToggleColor = isDarkBg ? 'text-gray-700 hover:text-gray-900 hover:bg-black/5' : 'text-white/80 hover:text-white hover:bg-white/10'
+    ? 'bg-white/90 text-gray-900 hover:bg-white shadow-md hover:shadow-lg'
+    : 'bg-gray-900/90 text-white hover:bg-gray-900 shadow-md hover:shadow-lg'
+  const logoColor = isDarkBg ? 'text-white' : 'text-black'
+  const mobileToggleColor = isDarkBg ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-black/70 hover:text-black hover:bg-black/5'
 
   return (
     <>
