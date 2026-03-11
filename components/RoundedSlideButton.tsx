@@ -7,6 +7,9 @@ interface RoundedSlideButtonProps {
   href?: string
   initialBg?: string
   initialText?: string
+  hoverBg?: string
+  hoverText?: string
+  hoverScale?: number
   className?: string
 }
 
@@ -15,6 +18,9 @@ export default function RoundedSlideButton({
   href,
   initialBg = 'var(--primary)',
   initialText = '#ffffff',
+  hoverBg = 'var(--primary)',
+  hoverText = '#ffffff',
+  hoverScale = 1.5,
   className = '',
 }: RoundedSlideButtonProps) {
   const Tag = href ? 'a' : 'button'
@@ -35,7 +41,6 @@ export default function RoundedSlideButton({
         before:transition-transform before:duration-1000
         before:content-[""]
 
-        hover:scale-150
         hover:before:translate-x-[0%]
         hover:before:translate-y-[0%]
         active:scale-95
@@ -43,8 +48,11 @@ export default function RoundedSlideButton({
       `}
       style={
         {
-          '--rsb-bg': initialBg,
-          '--rsb-text': initialText,
+          '--rsb-initial-bg': initialBg,
+          '--rsb-initial-text': initialText,
+          '--rsb-hover-bg': hoverBg,
+          '--rsb-hover-text': hoverText,
+          '--rsb-hover-scale': hoverScale,
           borderColor: initialBg,
           backgroundColor: initialBg,
           color: initialText,

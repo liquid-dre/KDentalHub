@@ -99,10 +99,12 @@ canvas {
 
 /* Rounded Slide Button */
 .rounded-slide-btn::before {
-  background-color: var(--rsb-text);
+  background-color: var(--rsb-hover-bg);
 }
 
 .rounded-slide-btn:hover {
   background-color: transparent;
-  color: var(--rsb-bg);
+  color: var(--rsb-hover-text);
+  border-color: var(--rsb-hover-bg);
+  transform: scale(var(--rsb-hover-scale));
 }

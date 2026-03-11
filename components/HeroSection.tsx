@@ -97,7 +97,14 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <RoundedSlideButton href="#contact">
+            <RoundedSlideButton
+              href="#contact"
+              initialBg="#ffffff"
+              initialText="var(--brand-blue)"
+              hoverBg="var(--brand-blue)"
+              hoverText="#000000"
+              hoverScale={1.15}
+            >
               <svg
                 width="16"
                 height="16"
