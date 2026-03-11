@@ -179,7 +179,8 @@ function ServiceStackedCards({
 							style={{ backgroundImage: `url(${service.image})` }}
 						/>
 						{/* Dark overlay for readability */}
-						<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+						<div className="absolute inset-0 bg-black/50" />
+						<div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
 						{/* Content */}
 						<div className="relative z-10 p-8 lg:p-12 flex flex-col justify-between h-full">
