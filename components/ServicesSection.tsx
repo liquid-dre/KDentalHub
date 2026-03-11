@@ -3,7 +3,8 @@
 import React, { Dispatch, SetStateAction, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CountUp } from '@/components/ui/count-up'
-import { ArrowRight, ShieldCheck, Syringe, Scissors, Sparkles } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Syringe, Scissors, Sparkles, Stethoscope, Smile, Crown, Scan, Heart, Brush } from 'lucide-react'
+import RoundedSlideButton from '@/components/RoundedSlideButton'
 
 // ─── Outline cursor constants ───────────────────────────────────────────────────
 const CURSOR_WIDTH = 32
@@ -110,6 +111,7 @@ interface ServiceShowcase {
   icon: React.ReactNode
   title: string
   description: string
+  image: string
 }
 
 const SERVICE_SHOWCASE: ServiceShowcase[] = [
@@ -118,40 +120,72 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
     title: 'Cavity Protection',
     description:
       'Advanced cavity prevention using the latest dental sealants and fluoride treatments. We protect your teeth with thorough examinations and personalized care plans.',
+    image: 'https://images.pexels.com/photos/6502019/pexels-photo-6502019.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: <Syringe className="w-10 h-10" strokeWidth={1.5} />,
     title: 'Root Canal Treatment',
     description:
       'Pain-free root canal therapy with modern techniques and sedation options. Our specialists ensure comfort while saving your natural teeth from extraction.',
+    image: 'https://images.pexels.com/photos/6627578/pexels-photo-6627578.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: <Scissors className="w-10 h-10" strokeWidth={1.5} />,
     title: 'Oral Surgery',
     description:
       'Expert oral surgery procedures including wisdom tooth extraction, dental implants, and corrective jaw surgery performed with precision and care.',
+    image: 'https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: <Sparkles className="w-10 h-10" strokeWidth={1.5} />,
     title: 'Teeth Whitening',
     description:
       'Professional whitening treatments that brighten your smile safely and effectively. Get a radiant, confident smile in just one visit.',
+    image: 'https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
-    icon: <ArrowRight className="w-10 h-10" strokeWidth={1.5} />,
+    icon: <Smile className="w-10 h-10" strokeWidth={1.5} />,
     title: 'Teeth Straightening',
     description:
       'Modern orthodontic solutions including clear aligners and traditional braces. Achieve a perfectly aligned smile with our customized treatment plans.',
+    image: 'https://images.pexels.com/photos/3845766/pexels-photo-3845766.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
-    icon: <ShieldCheck className="w-10 h-10" strokeWidth={1.5} />,
+    icon: <Crown className="w-10 h-10" strokeWidth={1.5} />,
     title: 'Dental Implant',
     description:
       'Permanent tooth replacement with state-of-the-art implant technology. Restore your smile and chewing function with natural-looking, long-lasting implants.',
+    image: 'https://images.pexels.com/photos/6627573/pexels-photo-6627573.jpeg?auto=compress&cs=tinysrgb&w=800',
+  },
+  {
+    icon: <Stethoscope className="w-10 h-10" strokeWidth={1.5} />,
+    title: 'Dental Checkup',
+    description:
+      'Comprehensive dental examinations with digital X-rays and oral cancer screening. Regular checkups keep your smile healthy and catch issues early.',
+    image: 'https://images.pexels.com/photos/3845625/pexels-photo-3845625.jpeg?auto=compress&cs=tinysrgb&w=800',
+  },
+  {
+    icon: <Scan className="w-10 h-10" strokeWidth={1.5} />,
+    title: 'Dental X-Ray',
+    description:
+      'State-of-the-art digital imaging for accurate diagnosis and treatment planning. Low-radiation technology ensures safety while providing crystal-clear results.',
+    image: 'https://images.pexels.com/photos/4269694/pexels-photo-4269694.jpeg?auto=compress&cs=tinysrgb&w=800',
+  },
+  {
+    icon: <Heart className="w-10 h-10" strokeWidth={1.5} />,
+    title: 'Pediatric Dentistry',
+    description:
+      'Gentle, child-friendly dental care in a fun and welcoming environment. Building positive dental habits from the very first visit for lifelong healthy smiles.',
+    image: 'https://images.pexels.com/photos/5355840/pexels-photo-5355840.jpeg?auto=compress&cs=tinysrgb&w=800',
+  },
+  {
+    icon: <Brush className="w-10 h-10" strokeWidth={1.5} />,
+    title: 'Deep Cleaning',
+    description:
+      'Thorough scaling and root planing to remove plaque and tartar buildup below the gumline. Essential treatment for maintaining gum health and preventing disease.',
+    image: 'https://images.pexels.com/photos/6502552/pexels-photo-6502552.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ]
-
-const CARD_COLORS = ['#1a1a1a', '#ffffff', '#1a1a1a', '#ffffff', '#1a1a1a', '#ffffff']
 
 function ServiceSelectBtns({
   numTracks,
@@ -204,9 +238,6 @@ function ServiceStackedCards({
       {SERVICE_SHOWCASE.map((service, i) => {
         const scale = i <= selected ? 1 : 1 + 0.015 * (i - selected)
         const offset = i <= selected ? 0 : 95 + (i - selected) * 3
-        const bg = CARD_COLORS[i % CARD_COLORS.length]
-        const textColor = bg === '#1a1a1a' ? '#ffffff' : '#1a1a1a'
-        const subtextColor = bg === '#1a1a1a' ? 'rgba(255,255,255,0.6)' : '#555'
 
         return (
           <motion.div
@@ -215,24 +246,30 @@ function ServiceStackedCards({
             style={{
               zIndex: i,
               transformOrigin: 'left bottom',
-              background: bg,
-              color: textColor,
             }}
             animate={{ x: `${offset}%`, scale }}
             whileHover={{ translateX: i === selected ? 0 : -3 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
             onClick={() => setSelected(i)}
-            className="absolute top-0 left-0 w-full min-h-full p-8 lg:p-12 cursor-pointer flex flex-col justify-between rounded-3xl"
+            className="absolute top-0 left-0 w-full min-h-full cursor-pointer flex flex-col justify-between rounded-3xl overflow-hidden"
           >
-            <div style={{ color: textColor, opacity: 0.7 }}>{service.icon}</div>
-            <div>
-              <h3 className="text-2xl lg:text-3xl font-bold mb-4">{service.title}</h3>
-              <p
-                className="text-[15px] lg:text-base leading-relaxed max-w-md"
-                style={{ color: subtextColor }}
-              >
-                &ldquo;{service.description}&rdquo;
-              </p>
+            {/* Background image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${service.image})` }}
+            />
+            {/* Dark overlay for readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+
+            {/* Content */}
+            <div className="relative z-10 p-8 lg:p-12 flex flex-col justify-between h-full">
+              <div className="text-white/70">{service.icon}</div>
+              <div>
+                <h3 className="text-2xl lg:text-3xl font-bold mb-4 text-white">{service.title}</h3>
+                <p className="text-[15px] lg:text-base leading-relaxed max-w-md text-white/70">
+                  {service.description}
+                </p>
+              </div>
             </div>
           </motion.div>
         )
@@ -495,9 +532,9 @@ export default function ServicesSection() {
             </motion.h2>
           </div>
 
-          {/* Main content: left text/CTA + right stacked cards */}
-          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            {/* Left column — text + CTA + avatars */}
+          {/* Description text + stacked cards inline */}
+          <div className="grid lg:grid-cols-[1fr_1.4fr] gap-14 lg:gap-20 items-start">
+            {/* Left column — description + CTA + avatars */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -507,13 +544,16 @@ export default function ServicesSection() {
               <p className="text-[15px] text-[#444] leading-relaxed mb-8 max-w-sm">
                 Our team of skilled and experienced dental professionals strives to create a comfortable and welcoming environment for each patient.
               </p>
-              <a
+              <RoundedSlideButton
                 href="#contact"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#1a1a1a] text-white text-sm font-semibold hover:bg-[#333] active:scale-[0.98] transition-all duration-200"
+                initialBg="#1a1a1a"
+                initialText="#ffffff"
+                hoverBg="#333333"
+                hoverText="#ffffff"
               >
-                Book Appointment
+                <span>Book Appointment</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </RoundedSlideButton>
 
               {/* Member avatars */}
               <div className="flex items-center gap-4 mt-12">
