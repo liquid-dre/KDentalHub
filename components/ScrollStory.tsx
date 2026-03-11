@@ -116,7 +116,7 @@ function BeatOverlay({
       {beat.cta && (
         <div className="flex gap-3 flex-wrap">
           <a
-            href="#contact"
+            href="/contact"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#0A6CFF] text-white text-sm font-bold shadow-[0_4px_20px_rgba(10,108,255,0.35)] hover:bg-[#0055D4] hover:shadow-[0_6px_28px_rgba(10,108,255,0.45)] active:scale-[0.98] transition-all duration-200"
           >
             {beat.cta}

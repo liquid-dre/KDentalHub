@@ -62,7 +62,7 @@ export default function Navbar() {
           {/* Right - Book an Appointment */}
           <div className="hidden md:block flex-shrink-0">
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full backdrop-blur-sm text-sm font-semibold active:scale-[0.97] transition-all duration-200 bg-white text-black hover:bg-white/90 shadow-md hover:shadow-lg"
             >
               <svg
@@ -134,7 +134,7 @@ export default function Navbar() {
               ))}
               <li className="pt-2 pb-1">
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-semibold bg-white text-black hover:bg-white/90 shadow-md hover:shadow-lg"
                   onClick={() => setMobileOpen(false)}
                 >

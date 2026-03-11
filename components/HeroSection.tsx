@@ -98,7 +98,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
           >
             <RoundedSlideButton
-              href="#contact"
+              href="/contact"
               initialBg="#ffffff"
               initialText="#000000"
               hoverBg="var(--brand-blue)"

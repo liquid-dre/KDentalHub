@@ -247,7 +247,7 @@ export default function ServicesCarousel() {
 							patient.
 						</p>
 						<RoundedSlideButton
-							href="#contact"
+							href="/contact"
 							initialBg="#ffffff"
 							initialText="#000000"
 							hoverBg="var(--brand-blue)"
