@@ -35,6 +35,13 @@ const SERVICES = [
     iconPath:
       'M6 2C3 2 1 5 1 9C1 13 4 16 6 18L5 26H11L10 18C12 16 14 13 14 9C14 5 12 2 9 2Z M18 2C15 2 13 5 13 9C13 13 16 16 18 18L17 26H23L22 18C24 16 27 13 27 9C27 5 24 2 21 2Z',
   },
+  {
+    title: 'Teeth Whitening',
+    description:
+      'Professional whitening treatments that brighten your smile safely and effectively, boosting your confidence.',
+    bg: '#D4F5E9',
+    iconPath: '',
+  },
 ]
 
 // ─── Why / stat items ───────────────────────────────────────────────────────────
@@ -84,7 +91,7 @@ function Sparkle({ className }: { className?: string }) {
 }
 
 // ─── Tooth Icon SVG ─────────────────────────────────────────────────────────────
-function ToothIcon({ variant }: { variant: 'cavity' | 'rootcanal' | 'surgery' }) {
+function ToothIcon({ variant }: { variant: 'cavity' | 'rootcanal' | 'surgery' | 'whitening' }) {
   if (variant === 'cavity') {
     return (
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,11 +141,36 @@ function ToothIcon({ variant }: { variant: 'cavity' | 'rootcanal' | 'surgery' })
     )
   }
 
-  // surgery - two teeth
+  if (variant === 'surgery') {
+    return (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16 4C12 4 9 7 8 12C7 7 4 4 2 4C2 4 0 18 8 24L7 34H13L12 24C18 20 19 14 19 10C18 6 16 4 16 4Z"
+          stroke="#2D2D2D"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <path
+          d="M36 4C32 4 29 7 28 12C27 7 24 4 22 4C22 4 20 18 28 24L27 34H33L32 24C38 20 39 14 39 10C38 6 36 4 36 4Z"
+          stroke="#2D2D2D"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <path d="M40 14L46 14" stroke="#2D2D2D" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M43 11L43 17" stroke="#2D2D2D" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    )
+  }
+
+  // whitening - tooth with sparkles
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
-        d="M16 4C12 4 9 7 8 12C7 7 4 4 2 4C2 4 0 18 8 24L7 34H13L12 24C18 20 19 14 19 10C18 6 16 4 16 4Z"
+        d="M24 4C18 4 14 8 13 14C12 8 8 4 4 4C4 4 2 22 14 30L12 42H20L18 30C26 26 28 18 28 12C26 6 24 4 24 4Z"
         stroke="#2D2D2D"
         strokeWidth="2"
         strokeLinecap="round"
@@ -146,15 +178,15 @@ function ToothIcon({ variant }: { variant: 'cavity' | 'rootcanal' | 'surgery' })
         fill="none"
       />
       <path
-        d="M36 4C32 4 29 7 28 12C27 7 24 4 22 4C22 4 20 18 28 24L27 34H33L32 24C38 20 39 14 39 10C38 6 36 4 36 4Z"
+        d="M36 4C32 4 30 6 28 12C28 18 24 26 32 30L30 42H38L40 30C48 22 46 4 46 4C42 4 38 8 37 14C36 8 36 4 36 4Z"
         stroke="#2D2D2D"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
       />
-      <path d="M40 14L46 14" stroke="#2D2D2D" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M43 11L43 17" stroke="#2D2D2D" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M34 8L36 4L38 8L42 10L38 12L36 16L34 12L30 10Z" stroke="#2D2D2D" strokeWidth="1.2" strokeLinejoin="round" fill="none" />
+      <path d="M40 18L41 16L42 18L44 19L42 20L41 22L40 20L38 19Z" stroke="#2D2D2D" strokeWidth="1" strokeLinejoin="round" fill="none" />
     </svg>
   )
 }
@@ -365,22 +397,37 @@ export default function ServicesSection() {
                 </div>
               </motion.div>
 
-              {/* Card 4: Image card */}
+              {/* Card 4: Teeth Whitening */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="outline-card relative rounded-[2rem] min-h-[380px] overflow-hidden bg-[#E5E7EB]"
+                className="outline-card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                style={{ backgroundColor: SERVICES[3].bg }}
               >
-                {/* Dental procedure image using available frame */}
-                <img
-                  src="/frames/ezgif-frame-176.jpg"
-                  alt="Dental procedure"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                {/* Subtle overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="flex items-start justify-between">
+                  <div className="w-16 h-16 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center">
+                    <ToothIcon variant="whitening" />
+                  </div>
+                  <Sparkle className="text-[#2D2D2D] mt-2" />
+                </div>
+
+                <div className="mt-auto pt-16">
+                  <h3 className="text-2xl lg:text-[1.7rem] font-bold text-[#1a1a1a] mb-3 tracking-tight">
+                    {SERVICES[3].title}
+                  </h3>
+                  <p className="text-[15px] text-[#555] leading-relaxed mb-6 max-w-sm">
+                    {SERVICES[3].description}
+                  </p>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
+                  >
+                    <span className="border-b border-[#1a1a1a] pb-0.5">Read More</span>
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                  </a>
+                </div>
               </motion.div>
             </div>
           </div>
