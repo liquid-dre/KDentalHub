@@ -4,6 +4,7 @@ import AboutSection from '@/components/AboutSection'
 import ServicesSection from '@/components/ServicesSection'
 import GetStartedCTA from '@/components/GetStartedCTA'
 import TestimonialsSection from '@/components/TestimonialsSection'
+import FAQSection from '@/components/FAQSection'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <ServicesSection />
       <GetStartedCTA />
       <TestimonialsSection />
+      <FAQSection />
       <Footer />
     </main>
   )
