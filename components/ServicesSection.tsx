@@ -1,8 +1,13 @@
 'use client'
 
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { CountUp } from '@/components/ui/count-up'
 import { ArrowRight } from 'lucide-react'
+
+// ─── Outline cursor constants ───────────────────────────────────────────────────
+const CURSOR_WIDTH = 32
+const HOVER_PADDING = 24
 
 // ─── Service card data ──────────────────────────────────────────────────────────
 const SERVICES = [
@@ -154,16 +159,65 @@ function ToothIcon({ variant }: { variant: 'cavity' | 'rootcanal' | 'surgery' })
   )
 }
 
+// ─── Outline Cursor component ───────────────────────────────────────────────────
+function OutlineCursor({
+  cursorRef,
+}: {
+  cursorRef: React.MutableRefObject<HTMLDivElement | null>
+}) {
+  return (
+    <div
+      ref={cursorRef}
+      style={{
+        width: 0,
+        height: 0,
+        borderRadius: CURSOR_WIDTH,
+        top: 0,
+        left: 0,
+      }}
+      className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 border border-neutral-900 z-50"
+    />
+  )
+}
+
 // ─── Main component ─────────────────────────────────────────────────────────────
 export default function ServicesSection() {
-  const variants = ['cavity', 'rootcanal', 'surgery'] as const
+  const cursorRef = useRef<HTMLDivElement | null>(null)
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    const el = e.target as HTMLElement
+    const card = el.closest('.outline-card') as HTMLElement | null
+    const cursorEl = cursorRef.current
+    if (!cursorEl) return
+
+    if (card) {
+      const { width, height, top, left } = card.getBoundingClientRect()
+      cursorEl.style.transition = '0.25s all'
+      cursorEl.style.width = `${width + HOVER_PADDING}px`
+      cursorEl.style.height = `${height + HOVER_PADDING}px`
+      cursorEl.style.borderRadius = `${HOVER_PADDING / 2}px`
+      cursorEl.style.top = `${top + window.scrollY + height / 2}px`
+      cursorEl.style.left = `${left + width / 2}px`
+    } else {
+      cursorEl.style.transition = '0s all'
+      cursorEl.style.width = `${CURSOR_WIDTH}px`
+      cursorEl.style.height = `${CURSOR_WIDTH}px`
+      cursorEl.style.borderRadius = `${CURSOR_WIDTH}px`
+      cursorEl.style.top = `${e.clientY + window.scrollY}px`
+      cursorEl.style.left = `${e.clientX}px`
+    }
+  }
 
   return (
     <>
       {/* ════════════════════════════════════════════════════════════════
           SERVICES SECTION — Redesigned Card Layout
       ════════════════════════════════════════════════════════════════ */}
-      <section id="services" className="relative bg-[#FAFAFA] py-24 lg:py-32 overflow-hidden">
+      <section
+        id="services"
+        onMouseMove={handleMouseMove}
+        className="relative bg-[#FAFAFA] py-24 lg:py-32 overflow-clip"
+      >
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 xl:px-12">
           {/* ── Section header — left-aligned ── */}
           <motion.div
@@ -190,7 +244,7 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                className="outline-card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
                 style={{ backgroundColor: SERVICES[0].bg }}
               >
                 {/* Icon + sparkle */}
@@ -224,7 +278,7 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                className="outline-card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
                 style={{ backgroundColor: SERVICES[2].bg }}
               >
                 <div className="flex items-start justify-between">
@@ -274,7 +328,7 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                className="outline-card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
                 style={{ backgroundColor: SERVICES[1].bg }}
               >
                 <div className="flex items-start justify-between">
@@ -307,7 +361,7 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-[2rem] min-h-[380px] overflow-hidden bg-[#E5E7EB]"
+                className="outline-card relative rounded-[2rem] min-h-[380px] overflow-hidden bg-[#E5E7EB]"
               >
                 {/* Dental procedure image using available frame */}
                 <img
@@ -321,6 +375,9 @@ export default function ServicesSection() {
             </div>
           </div>
         </div>
+
+        {/* Outline cursor */}
+        <OutlineCursor cursorRef={cursorRef} />
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
