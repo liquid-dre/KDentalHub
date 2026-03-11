@@ -2,12 +2,24 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import ServiceDropdown from "@/components/ServiceDropdown";
+import { SERVICES, type ServiceName } from "@/components/services/services";
 
 const BASE_TRANSITION = { ease: "anticipate", duration: 0.75 };
 
+function getInitialService(param: string | null): ServiceName | "" {
+  if (!param) return "";
+  return SERVICES.find((s) => s.toLowerCase() === param.toLowerCase()) ?? "";
+}
+
 export default function ContactPage() {
   const [selected, setSelected] = useState<"new" | "existing">("new");
+  const searchParams = useSearchParams();
+  const [service, setService] = useState<ServiceName | "">(() =>
+    getInitialService(searchParams.get("service"))
+  );
 
   return (
     <section className="min-h-screen bg-[#F0F8FF] flex flex-col">
@@ -36,7 +48,12 @@ export default function ContactPage() {
       {/* Form */}
       <div className="flex-1 flex items-center justify-center p-4 pb-12">
         <div className="w-full max-w-6xl shadow-xl flex flex-col-reverse lg:flex-row rounded-2xl overflow-hidden">
-          <Form selected={selected} setSelected={setSelected} />
+          <Form
+            selected={selected}
+            setSelected={setSelected}
+            service={service}
+            setService={setService}
+          />
           <Images selected={selected} />
         </div>
       </div>
@@ -47,10 +64,17 @@ export default function ContactPage() {
 function Form({
   selected,
   setSelected,
+  service,
+  setService,
 }: {
   selected: "new" | "existing";
   setSelected: Dispatch<SetStateAction<"new" | "existing">>;
+  service: ServiceName | "";
+  setService: Dispatch<SetStateAction<ServiceName | "">>;
 }) {
+  const inputBg =
+    selected === "existing" ? "bg-[#0A6CFF]/80" : "bg-[#064aad]";
+
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
@@ -66,9 +90,7 @@ function Form({
         <input
           type="text"
           placeholder="Your full name..."
-          className={`${
-            selected === "existing" ? "bg-[#0A6CFF]/80" : "bg-[#064aad]"
-          } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
+          className={`${inputBg} transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
         />
       </div>
 
@@ -92,22 +114,19 @@ function Form({
             <input
               type="text"
               placeholder="Your patient ID (optional)..."
-              className={`${
-                selected === "existing" ? "bg-[#0A6CFF]/80" : "bg-[#064aad]"
-              } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
+              className={`${inputBg} transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
             />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Message */}
+      {/* Service selection */}
       <div className="mb-6">
         <p className="text-2xl mb-2">I&apos;d like to book for...</p>
-        <textarea
-          placeholder="e.g. Routine check-up, teeth cleaning, dental emergency..."
-          className={`${
-            selected === "existing" ? "bg-[#0A6CFF]/80" : "bg-[#064aad]"
-          } transition-colors duration-[750ms] min-h-[150px] resize-none placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
+        <ServiceDropdown
+          selected={service}
+          setSelected={setService}
+          colorClass={`${inputBg} transition-colors duration-[750ms]`}
         />
       </div>
 
@@ -117,9 +136,7 @@ function Form({
         <input
           type="tel"
           placeholder="Your phone number..."
-          className={`${
-            selected === "existing" ? "bg-[#0A6CFF]/80" : "bg-[#064aad]"
-          } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
+          className={`${inputBg} transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
         />
       </div>
 
