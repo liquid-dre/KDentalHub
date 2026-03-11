@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import SplitText from './SplitText'
+import RoundedSlideButton from './RoundedSlideButton'
 
 export default function HeroSection() {
   return (
@@ -91,45 +92,28 @@ export default function HeroSection() {
           </div>
 
           {/* CTA Button */}
-          <motion.a
-            href="#contact"
-            className={`
-              relative z-0 inline-flex items-center gap-3 overflow-hidden
-              rounded-full border-2 border-[var(--brand-blue)]
-              px-8 py-4 text-sm md:text-base font-semibold uppercase
-              text-[var(--brand-blue)] transition-all duration-500
-
-              before:absolute before:inset-0
-              before:-z-10 before:translate-x-[150%]
-              before:translate-y-[150%] before:scale-[2.5]
-              before:rounded-[100%] before:bg-[var(--brand-blue)]
-              before:transition-transform before:duration-1000
-              before:content-[""]
-
-              hover:scale-105 hover:text-neutral-900
-              hover:before:translate-x-[0%]
-              hover:before:translate-y-[0%]
-              active:scale-95
-            `}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="flex-shrink-0"
-            >
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-            </svg>
-            <span>Book Appointment</span>
-          </motion.a>
+            <RoundedSlideButton href="#contact">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="flex-shrink-0"
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span>Book Appointment</span>
+            </RoundedSlideButton>
+          </motion.div>
         </div>
       </div>
     </section>

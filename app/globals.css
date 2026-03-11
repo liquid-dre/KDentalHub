@@ -96,3 +96,13 @@ canvas {
     inset 0 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 }
+
+/* Rounded Slide Button */
+.rounded-slide-btn::before {
+  background-color: var(--rsb-text);
+}
+
+.rounded-slide-btn:hover {
+  background-color: transparent;
+  color: var(--rsb-bg);
+}
