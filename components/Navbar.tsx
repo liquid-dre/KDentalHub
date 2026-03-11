@@ -5,15 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#' },
+  { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
-  { label: 'Why Choose Us', href: '#why' },
-  { label: 'Kids Care', href: '#kids' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Appointment', href: '#contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [activeLink, setActiveLink] = useState('Home')
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30)
@@ -21,7 +21,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close mobile menu on resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) setMobileOpen(false)
@@ -33,64 +32,67 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-white/80 backdrop-blur-xl border-b border-[#DCEBFF]/80 shadow-[0_1px_20px_rgba(10,108,255,0.06)]'
-            : 'bg-transparent'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-8"
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
-        <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-[68px] flex items-center justify-between gap-8">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 flex-shrink-0 group">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#0A6CFF] to-[#6FD3FF] flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow duration-200">
-              <span className="text-white text-sm font-extrabold tracking-tight">K</span>
-            </div>
-            <span className="font-bold text-[#0F172A] tracking-tight text-[15px]">
-              K Dental Hub
+        <nav className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* Logo - Extreme Left */}
+          <a href="#" className="flex-shrink-0 group">
+            <span className="font-extrabold text-white text-2xl md:text-3xl tracking-tight drop-shadow-lg">
+              Dental Hub
             </span>
           </a>
 
-          {/* Desktop Nav Links */}
-          <ul className="hidden md:flex items-center gap-1">
+          {/* Center - Liquid Glass Nav Pill */}
+          <div className="hidden md:flex items-center liquid-glass-nav rounded-full px-2 py-1.5">
             {NAV_LINKS.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="relative px-4 py-2 text-sm font-medium text-[#475569] hover:text-[#0A6CFF] transition-colors duration-200 rounded-lg hover:bg-[#F7FBFF] group"
-                >
-                  {link.label}
-                  <span className="absolute bottom-1 left-4 right-4 h-[2px] bg-[#0A6CFF] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full" />
-                </a>
-              </li>
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setActiveLink(link.label)}
+                className={`relative px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                  activeLink === link.label
+                    ? 'bg-white/90 text-gray-900 shadow-sm'
+                    : 'text-white/80 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                {link.label}
+              </a>
             ))}
-          </ul>
+          </div>
 
-          {/* Desktop CTA */}
+          {/* Right - Call Now Pill Button */}
           <div className="hidden md:block flex-shrink-0">
             <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0A6CFF] text-white text-sm font-semibold hover:bg-[#0055D4] active:scale-[0.98] transition-all duration-200 shadow-[0_2px_12px_rgba(10,108,255,0.25)] hover:shadow-[0_4px_20px_rgba(10,108,255,0.35)]"
+              href="tel:+1234567890"
+              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-white/90 backdrop-blur-sm text-gray-900 text-sm font-semibold hover:bg-white hover:shadow-lg active:scale-[0.97] transition-all duration-200 shadow-md"
             >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="flex-shrink-0">
-                <path d="M7 1C4.24 1 2 3.24 2 6C2 7.93 3.07 9.62 4.65 10.5L4 13L6.5 11.95C6.67 11.98 6.83 12 7 12C9.76 12 12 9.76 12 7C12 4.24 9.76 2 7 2" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="5" cy="6" r="0.7" fill="white"/>
-                <circle cx="7" cy="6" r="0.7" fill="white"/>
-                <circle cx="9" cy="6" r="0.7" fill="white"/>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="flex-shrink-0"
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
-              Book Appointment
+              Call Now
             </a>
           </div>
 
           {/* Mobile menu toggle */}
           <button
-            className="md:hidden p-2 rounded-lg text-[#475569] hover:text-[#0A6CFF] hover:bg-[#F7FBFF] transition-colors duration-200"
+            className="md:hidden p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors duration-200"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation"
           >
-            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
               {mobileOpen ? (
                 <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" />
               ) : (
@@ -112,16 +114,23 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-[68px] left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-xl border-b border-[#DCEBFF] shadow-lg"
+            transition={{ duration: 0.25 }}
+            className="fixed top-[72px] left-4 right-4 z-40 md:hidden liquid-glass-nav rounded-2xl shadow-2xl"
           >
-            <ul className="max-w-7xl mx-auto px-6 py-4 space-y-1">
+            <ul className="px-4 py-3 space-y-1">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="block px-4 py-3 text-sm font-medium text-[#475569] hover:text-[#0A6CFF] hover:bg-[#F7FBFF] rounded-lg transition-colors duration-150"
-                    onClick={() => setMobileOpen(false)}
+                    className={`block px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
+                      activeLink === link.label
+                        ? 'bg-white/90 text-gray-900 shadow-sm'
+                        : 'text-white/80 hover:text-white hover:bg-white/10'
+                    }`}
+                    onClick={() => {
+                      setActiveLink(link.label)
+                      setMobileOpen(false)
+                    }}
                   >
                     {link.label}
                   </a>
@@ -129,11 +138,23 @@ export default function Navbar() {
               ))}
               <li className="pt-2 pb-1">
                 <a
-                  href="#contact"
-                  className="flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#0A6CFF] text-white text-sm font-semibold shadow-[0_2px_12px_rgba(10,108,255,0.25)]"
+                  href="tel:+1234567890"
+                  className="flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/90 text-gray-900 text-sm font-semibold shadow-md"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Book Appointment
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                  Call Now
                 </a>
               </li>
             </ul>
