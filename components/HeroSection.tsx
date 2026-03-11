@@ -60,7 +60,7 @@ export default function HeroSection() {
             </motion.span>{' '}
             <SplitText
               text="Care"
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-[var(--primary)] leading-[1.05] tracking-tight"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-[var(--brand-blue)] leading-[1.05] tracking-tight"
               delay={50}
               duration={1.25}
               ease="power3.out"
