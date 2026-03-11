@@ -175,7 +175,7 @@ function OutlineCursor({
         top: 0,
         left: 0,
       }}
-      className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 border border-neutral-900 z-50"
+      className="pointer-events-none fixed -translate-x-1/2 -translate-y-1/2 border border-neutral-900 z-[9999]"
     />
   )
 }
@@ -196,14 +196,14 @@ export default function ServicesSection() {
       cursorEl.style.width = `${width + HOVER_PADDING}px`
       cursorEl.style.height = `${height + HOVER_PADDING}px`
       cursorEl.style.borderRadius = `${HOVER_PADDING / 2}px`
-      cursorEl.style.top = `${top + window.scrollY + height / 2}px`
+      cursorEl.style.top = `${top + height / 2}px`
       cursorEl.style.left = `${left + width / 2}px`
     } else {
       cursorEl.style.transition = '0s all'
       cursorEl.style.width = `${CURSOR_WIDTH}px`
       cursorEl.style.height = `${CURSOR_WIDTH}px`
       cursorEl.style.borderRadius = `${CURSOR_WIDTH}px`
-      cursorEl.style.top = `${e.clientY + window.scrollY}px`
+      cursorEl.style.top = `${e.clientY}px`
       cursorEl.style.left = `${e.clientX}px`
     }
   }
@@ -213,9 +213,19 @@ export default function ServicesSection() {
       {/* ════════════════════════════════════════════════════════════════
           SERVICES SECTION — Redesigned Card Layout
       ════════════════════════════════════════════════════════════════ */}
+      {/* Outline cursor — rendered outside section to avoid overflow clipping */}
+      <OutlineCursor cursorRef={cursorRef} />
+
       <section
         id="services"
         onMouseMove={handleMouseMove}
+        onMouseLeave={() => {
+          const cursorEl = cursorRef.current
+          if (cursorEl) {
+            cursorEl.style.width = '0px'
+            cursorEl.style.height = '0px'
+          }
+        }}
         className="relative bg-[#FAFAFA] py-24 lg:py-32 overflow-clip"
       >
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 xl:px-12">
@@ -376,8 +386,6 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        {/* Outline cursor */}
-        <OutlineCursor cursorRef={cursorRef} />
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
