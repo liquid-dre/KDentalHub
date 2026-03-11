@@ -103,8 +103,8 @@ export default function AboutSection() {
             >
               <div className="w-full h-[300px] xl:h-[340px] rotate-2">
                 <img
-                  src="https://images.pexels.com/photos/6528907/pexels-photo-6528907.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Dentist examining patient teeth"
+                  src="https://images.pexels.com/photos/6812547/pexels-photo-6812547.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Black patient at dental checkup"
                   className="w-full h-full object-cover rounded-3xl shadow-lg"
                   loading="lazy"
                 />
@@ -157,8 +157,8 @@ export default function AboutSection() {
                 alt: 'Patient receiving dental checkup',
               },
               {
-                src: 'https://images.pexels.com/photos/6528907/pexels-photo-6528907.jpeg?auto=compress&cs=tinysrgb&w=800',
-                alt: 'Dentist examining patient teeth',
+                src: 'https://images.pexels.com/photos/6812547/pexels-photo-6812547.jpeg?auto=compress&cs=tinysrgb&w=800',
+                alt: 'Black patient at dental checkup',
               },
             ].map((img, i) => (
               <motion.div
