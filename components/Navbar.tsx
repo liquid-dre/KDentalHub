@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#' },
-  { label: 'About', href: '#about' },
+  { label: 'About', href: '#about-us' },
   { label: 'Services', href: '#services' },
-  { label: 'FAQ', href: '#contact' },
+  { label: 'FAQ', href: '#faq' },
 ]
 
 function getLuminance(r: number, g: number, b: number) {
@@ -135,7 +135,7 @@ export default function Navbar() {
           {/* Right - Book an Appointment Pill Button */}
           <div className="hidden md:block flex-shrink-0">
             <a
-              href="tel:+1234567890"
+              href="#contact"
               className={`inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full backdrop-blur-sm text-sm font-semibold active:scale-[0.97] transition-all duration-500 ${callBtnClass}`}
             >
               <svg
@@ -207,7 +207,7 @@ export default function Navbar() {
               ))}
               <li className="pt-2 pb-1">
                 <a
-                  href="tel:+1234567890"
+                  href="#contact"
                   className={`flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-semibold transition-all duration-500 ${callBtnClass}`}
                   onClick={() => setMobileOpen(false)}
                 >
