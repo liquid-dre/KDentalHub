@@ -29,7 +29,7 @@ export default function HeroSection() {
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
             Seamless
             <br />
-            Dental <span className="inline-block">🦷</span> <span className="text-[var(--primary)]">Care</span>
+            Dental <span className="inline-block">🦷</span> <span className="text-[var(--brand-blue)]">Care</span>
           </h1>
 
           {/* Subtitle */}
