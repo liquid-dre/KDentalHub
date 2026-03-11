@@ -67,7 +67,7 @@ export default function AboutSection() {
               {/* CTA Button */}
               <div className="mb-0">
                 <RoundedSlideButton
-                  href="/contact"
+                  href="/booking"
                   initialBg="#1a1a1a"
                   initialText="#ffffff"
                   hoverBg="var(--brand-blue)"

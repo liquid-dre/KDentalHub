@@ -170,11 +170,11 @@ export default function ServicesGrid() {
 										{SERVICES[0].description}
 									</p>
 									<a
-										href={`/contact?service=${encodeURIComponent(SERVICES[0].title)}`}
+										href="/services/cavity-protection"
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Enquire About Service
+											Learn More
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>
@@ -212,11 +212,11 @@ export default function ServicesGrid() {
 										{SERVICES[2].description}
 									</p>
 									<a
-										href={`/contact?service=${encodeURIComponent(SERVICES[2].title)}`}
+										href="/services/oral-surgery"
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Enquire About Service
+											Learn More
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>
@@ -271,11 +271,11 @@ export default function ServicesGrid() {
 										{SERVICES[1].description}
 									</p>
 									<a
-										href={`/contact?service=${encodeURIComponent(SERVICES[1].title)}`}
+										href="/services/root-canal-treatment"
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Enquire About Service
+											Learn More
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>
@@ -313,11 +313,11 @@ export default function ServicesGrid() {
 										{SERVICES[3].description}
 									</p>
 									<a
-										href={`/contact?service=${encodeURIComponent(SERVICES[3].title)}`}
+										href="/services/teeth-whitening"
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Enquire About Service
+											Learn More
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>

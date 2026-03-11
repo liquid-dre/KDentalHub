@@ -52,7 +52,7 @@ export default function GetStartedCTA() {
 								Call Us Today
 							</a>
 							<RoundedSlideButton
-								href="/contact"
+								href="/booking"
 								initialBg="#ffffff"
 								initialText="#000000"
 								hoverBg="var(--brand-blue)"

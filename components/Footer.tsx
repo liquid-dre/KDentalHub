@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: 'About Us', href: '#why' },
   { label: 'Services', href: '#services' },
   { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Contact Us', href: '/contact' },
+  { label: 'Contact Us', href: '/booking' },
 ]
 
 const COMPANY_LINKS = [
@@ -15,7 +15,7 @@ const COMPANY_LINKS = [
   { label: 'Our Team', href: '#why' },
   { label: 'Services', href: '#services' },
   { label: 'FAQ', href: '#faq' },
-  { label: 'Book Appointment', href: '/contact' },
+  { label: 'Book Appointment', href: '/booking' },
 ]
 
 const SOCIAL_LINKS = [

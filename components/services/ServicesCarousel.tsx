@@ -20,6 +20,7 @@ import RoundedSlideButton from "@/components/RoundedSlideButton";
 interface ServiceShowcase {
 	icon: React.ReactNode;
 	title: string;
+	slug: string;
 	description: string;
 	image: string;
 }
@@ -28,6 +29,7 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
 	{
 		icon: <ShieldCheck className="w-10 h-10" strokeWidth={1.5} />,
 		title: "Cavity Protection",
+		slug: "cavity-protection",
 		description:
 			"Advanced cavity prevention using the latest dental sealants and fluoride treatments. We protect your teeth with thorough examinations and personalized care plans.",
 		image:
@@ -36,6 +38,7 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
 	{
 		icon: <Syringe className="w-10 h-10" strokeWidth={1.5} />,
 		title: "Root Canal Treatment",
+		slug: "root-canal-treatment",
 		description:
 			"Pain-free root canal therapy with modern techniques and sedation options. Our specialists ensure comfort while saving your natural teeth from extraction.",
 		image:
@@ -44,6 +47,7 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
 	{
 		icon: <Scissors className="w-10 h-10" strokeWidth={1.5} />,
 		title: "Oral Surgery",
+		slug: "oral-surgery",
 		description:
 			"Expert oral surgery procedures including wisdom tooth extraction, dental implants, and corrective jaw surgery performed with precision and care.",
 		image:
@@ -52,6 +56,7 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
 	{
 		icon: <Sparkles className="w-10 h-10" strokeWidth={1.5} />,
 		title: "Teeth Whitening",
+		slug: "teeth-whitening",
 		description:
 			"Professional whitening treatments that brighten your smile safely and effectively. Get a radiant, confident smile in just one visit.",
 		image:
@@ -60,6 +65,7 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
 	{
 		icon: <Smile className="w-10 h-10" strokeWidth={1.5} />,
 		title: "Teeth Straightening",
+		slug: "teeth-straightening",
 		description:
 			"Modern orthodontic solutions including clear aligners and traditional braces. Achieve a perfectly aligned smile with our customized treatment plans.",
 		image:
@@ -68,6 +74,7 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
 	{
 		icon: <Crown className="w-10 h-10" strokeWidth={1.5} />,
 		title: "Dental Implant",
+		slug: "dental-implant",
 		description:
 			"Permanent tooth replacement with state-of-the-art implant technology. Restore your smile and chewing function with natural-looking, long-lasting implants.",
 		image:
@@ -76,6 +83,7 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
 	{
 		icon: <Stethoscope className="w-10 h-10" strokeWidth={1.5} />,
 		title: "Dental Checkup",
+		slug: "dental-checkup",
 		description:
 			"Comprehensive dental examinations with digital X-rays and oral cancer screening. Regular checkups keep your smile healthy and catch issues early.",
 		image:
@@ -84,6 +92,7 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
 	{
 		icon: <Scan className="w-10 h-10" strokeWidth={1.5} />,
 		title: "Dental X-Ray",
+		slug: "dental-x-ray",
 		description:
 			"State-of-the-art digital imaging for accurate diagnosis and treatment planning. Low-radiation technology ensures safety while providing crystal-clear results.",
 		image:
@@ -92,6 +101,7 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
 	{
 		icon: <Heart className="w-10 h-10" strokeWidth={1.5} />,
 		title: "Pediatric Dentistry",
+		slug: "pediatric-dentistry",
 		description:
 			"Gentle, child-friendly dental care in a fun and welcoming environment. Building positive dental habits from the very first visit for lifelong healthy smiles.",
 		image:
@@ -100,6 +110,7 @@ const SERVICE_SHOWCASE: ServiceShowcase[] = [
 	{
 		icon: <Brush className="w-10 h-10" strokeWidth={1.5} />,
 		title: "Deep Cleaning",
+		slug: "deep-cleaning",
 		description:
 			"Thorough scaling and root planing to remove plaque and tartar buildup below the gumline. Essential treatment for maintaining gum health and preventing disease.",
 		image:
@@ -189,9 +200,21 @@ function ServiceStackedCards({
 								<h3 className="text-2xl lg:text-3xl font-bold mb-4 text-white">
 									{service.title}
 								</h3>
-								<p className="text-[15px] lg:text-base leading-relaxed max-w-md text-white/70">
+								<p className="text-[15px] lg:text-base leading-relaxed max-w-md text-white/70 mb-4">
 									{service.description}
 								</p>
+								{i === selected && (
+									<a
+										href={`/services/${service.slug}`}
+										className="inline-flex items-center gap-2 text-sm font-semibold text-white group/link"
+										onClick={(e) => e.stopPropagation()}
+									>
+										<span className="border-b border-white/60 pb-0.5">
+											Learn More
+										</span>
+										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+									</a>
+								)}
 							</div>
 						</div>
 					</motion.div>
@@ -246,17 +269,27 @@ export default function ServicesCarousel() {
 							to create a comfortable and welcoming environment for each
 							patient.
 						</p>
-						<RoundedSlideButton
-							href={`/contact?service=${encodeURIComponent(SERVICE_SHOWCASE[selectedService].title)}`}
-							initialBg="#ffffff"
-							initialText="#000000"
-							hoverBg="var(--brand-blue)"
-							hoverText="#000000"
-							hoverScale={1.15}
-						>
-							<span>Book Appointment</span>
-							<ArrowRight className="w-4 h-4" />
-						</RoundedSlideButton>
+						<div className="flex flex-col sm:flex-row gap-3">
+							<RoundedSlideButton
+								href={`/booking?service=${encodeURIComponent(SERVICE_SHOWCASE[selectedService].title)}`}
+								initialBg="#ffffff"
+								initialText="#000000"
+								hoverBg="var(--brand-blue)"
+								hoverText="#000000"
+								hoverScale={1.15}
+							>
+								<span>Book Appointment</span>
+								<ArrowRight className="w-4 h-4" />
+							</RoundedSlideButton>
+
+							<a
+								href="/services"
+								className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-[#1a1a1a]/20 text-sm font-semibold text-[#1a1a1a] hover:border-[#1a1a1a]/40 hover:bg-white/50 active:scale-95 transition-all duration-200"
+							>
+								<span>View All Services</span>
+								<ArrowRight className="w-4 h-4" />
+							</a>
+						</div>
 
 						{/* Client avatars */}
 						<div className="flex items-center gap-4 mt-12">
