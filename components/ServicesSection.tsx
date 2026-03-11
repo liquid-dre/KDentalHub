@@ -3,7 +3,7 @@
 import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { CountUp } from '@/components/ui/count-up'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Syringe, Scissors, Sparkles } from 'lucide-react'
 
 // ─── Outline cursor constants ───────────────────────────────────────────────────
 const CURSOR_WIDTH = 32
@@ -16,31 +16,24 @@ const SERVICES = [
     description:
       'As we move into this new era of technology, we tend to look at the future with confidence and pride, which is why our theme.',
     bg: '#FFF0D4',
-    iconPath:
-      'M24 4C18 4 13 8 12 14C11 8 6 4 0 4C0 4 -2 20 12 28C26 20 24 4 24 4Z M10 14V20 M14 14V20',
   },
   {
     title: 'Root Canal Treatment',
     description:
       "In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.",
     bg: '#EDD8FF',
-    iconPath:
-      'M12 2C8 2 5 5 5 9C5 12 7 14 9 16L8 22H16L15 16C17 14 19 12 19 9C19 5 16 2 12 2Z M10 22V26 M14 22V26',
   },
   {
     title: 'Oral Surgery',
     description:
       "In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.",
     bg: '#D4EEFF',
-    iconPath:
-      'M6 2C3 2 1 5 1 9C1 13 4 16 6 18L5 26H11L10 18C12 16 14 13 14 9C14 5 12 2 9 2Z M18 2C15 2 13 5 13 9C13 13 16 16 18 18L17 26H23L22 18C24 16 27 13 27 9C27 5 24 2 21 2Z',
   },
   {
     title: 'Teeth Whitening',
     description:
       'Professional whitening treatments that brighten your smile safely and effectively, boosting your confidence.',
     bg: '#D4F5E9',
-    iconPath: '',
   },
 ]
 
@@ -90,106 +83,6 @@ function Sparkle({ className }: { className?: string }) {
   )
 }
 
-// ─── Tooth Icon SVG ─────────────────────────────────────────────────────────────
-function ToothIcon({ variant }: { variant: 'cavity' | 'rootcanal' | 'surgery' | 'whitening' }) {
-  if (variant === 'cavity') {
-    return (
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M24 6C18 6 14 10 13 16C12 10 8 6 4 6C4 6 2 24 14 32L12 42H20L18 32C26 28 30 20 30 14C28 8 26 6 24 6Z"
-          stroke="#2D2D2D"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        <path
-          d="M34 6C30 6 28 8 26 14C26 20 22 28 30 32L28 42H36L38 32C46 24 44 6 44 6C40 6 36 10 35 16C34 10 34 6 34 6Z"
-          stroke="#2D2D2D"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        <circle cx="22" cy="18" r="3" stroke="#2D2D2D" strokeWidth="1.5" fill="none" />
-      </svg>
-    )
-  }
-
-  if (variant === 'rootcanal') {
-    return (
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M24 4C18 4 14 8 13 14C12 8 8 4 4 4C4 4 2 22 14 30L12 42H20L18 30C26 26 28 18 28 12C26 6 24 4 24 4Z"
-          stroke="#2D2D2D"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        <path
-          d="M36 4C32 4 30 6 28 12C28 18 24 26 32 30L30 42H38L40 30C48 22 46 4 46 4C42 4 38 8 37 14C36 8 36 4 36 4Z"
-          stroke="#2D2D2D"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        <path d="M16 30V42" stroke="#2D2D2D" strokeWidth="1.5" strokeDasharray="2 2" />
-        <path d="M34 30V42" stroke="#2D2D2D" strokeWidth="1.5" strokeDasharray="2 2" />
-      </svg>
-    )
-  }
-
-  if (variant === 'surgery') {
-    return (
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M16 4C12 4 9 7 8 12C7 7 4 4 2 4C2 4 0 18 8 24L7 34H13L12 24C18 20 19 14 19 10C18 6 16 4 16 4Z"
-          stroke="#2D2D2D"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        <path
-          d="M36 4C32 4 29 7 28 12C27 7 24 4 22 4C22 4 20 18 28 24L27 34H33L32 24C38 20 39 14 39 10C38 6 36 4 36 4Z"
-          stroke="#2D2D2D"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        <path d="M40 14L46 14" stroke="#2D2D2D" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M43 11L43 17" stroke="#2D2D2D" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    )
-  }
-
-  // whitening - tooth with sparkles
-  return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M24 4C18 4 14 8 13 14C12 8 8 4 4 4C4 4 2 22 14 30L12 42H20L18 30C26 26 28 18 28 12C26 6 24 4 24 4Z"
-        stroke="#2D2D2D"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      <path
-        d="M36 4C32 4 30 6 28 12C28 18 24 26 32 30L30 42H38L40 30C48 22 46 4 46 4C42 4 38 8 37 14C36 8 36 4 36 4Z"
-        stroke="#2D2D2D"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      <path d="M34 8L36 4L38 8L42 10L38 12L36 16L34 12L30 10Z" stroke="#2D2D2D" strokeWidth="1.2" strokeLinejoin="round" fill="none" />
-      <path d="M40 18L41 16L42 18L44 19L42 20L41 22L40 20L38 19Z" stroke="#2D2D2D" strokeWidth="1" strokeLinejoin="round" fill="none" />
-    </svg>
-  )
-}
 
 // ─── Outline Cursor component ───────────────────────────────────────────────────
 function OutlineCursor({
@@ -292,7 +185,7 @@ export default function ServicesSection() {
                 {/* Icon + sparkle */}
                 <div className="flex items-start justify-between">
                   <div className="w-16 h-16 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center">
-                    <ToothIcon variant="cavity" />
+                    <ShieldCheck className="w-7 h-7 text-[#2D2D2D]" strokeWidth={1.5} />
                   </div>
                   <Sparkle className="text-[#2D2D2D] mt-2" />
                 </div>
@@ -325,7 +218,7 @@ export default function ServicesSection() {
               >
                 <div className="flex items-start justify-between">
                   <div className="w-16 h-16 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center">
-                    <ToothIcon variant="surgery" />
+                    <Scissors className="w-7 h-7 text-[#2D2D2D]" strokeWidth={1.5} />
                   </div>
                   <Sparkle className="text-[#2D2D2D] mt-2" />
                 </div>
@@ -375,7 +268,7 @@ export default function ServicesSection() {
               >
                 <div className="flex items-start justify-between">
                   <div className="w-16 h-16 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center">
-                    <ToothIcon variant="rootcanal" />
+                    <Syringe className="w-7 h-7 text-[#2D2D2D]" strokeWidth={1.5} />
                   </div>
                   <Sparkle className="text-[#2D2D2D] mt-2" />
                 </div>
@@ -408,7 +301,7 @@ export default function ServicesSection() {
               >
                 <div className="flex items-start justify-between">
                   <div className="w-16 h-16 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center">
-                    <ToothIcon variant="whitening" />
+                    <Sparkles className="w-7 h-7 text-[#2D2D2D]" strokeWidth={1.5} />
                   </div>
                   <Sparkle className="text-[#2D2D2D] mt-2" />
                 </div>
