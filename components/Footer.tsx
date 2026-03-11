@@ -10,7 +10,7 @@ const FOOTER_LINKS = {
     { label: 'About Us', href: '#why' },
     { label: 'Why Choose Us', href: '#why' },
     { label: 'Our Team', href: '#' },
-    { label: 'Testimonials', href: '#' },
+    { label: 'Testimonials', href: '#testimonials' },
   ],
   Contact: [
     { label: 'Book Appointment', href: '#contact' },
