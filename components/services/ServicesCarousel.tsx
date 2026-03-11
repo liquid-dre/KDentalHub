@@ -258,73 +258,67 @@ export default function ServicesCarousel() {
 							<ArrowRight className="w-4 h-4" />
 						</RoundedSlideButton>
 
-						{/* Member avatars */}
+						{/* Client avatars */}
 						<div className="flex items-center gap-4 mt-12">
 							<div className="flex -space-x-3">
-								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white/60 overflow-hidden">
+								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-[#E8F5E9] overflow-hidden flex items-center justify-center">
 									<svg
-										className="w-full h-full text-[#bbb]"
-										viewBox="0 0 44 44"
+										className="w-6 h-6 text-[#4CAF50]"
+										viewBox="0 0 24 24"
 										fill="none"
 									>
 										<circle
-											cx="22"
-											cy="18"
-											r="8"
-											stroke="currentColor"
-											strokeWidth="1.5"
+											cx="12"
+											cy="8"
+											r="4"
+											fill="currentColor"
 										/>
 										<path
-											d="M6 40c0-8.84 7.16-16 16-16s16 7.16 16 16"
-											stroke="currentColor"
-											strokeWidth="1.5"
+											d="M4 20c0-4.42 3.58-8 8-8s8 3.58 8 8"
+											fill="currentColor"
 										/>
 									</svg>
 								</div>
-								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white/60 overflow-hidden">
+								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-[#E3F2FD] overflow-hidden flex items-center justify-center">
 									<svg
-										className="w-full h-full text-[#bbb]"
-										viewBox="0 0 44 44"
+										className="w-6 h-6 text-[#2196F3]"
+										viewBox="0 0 24 24"
 										fill="none"
 									>
 										<circle
-											cx="22"
-											cy="18"
-											r="8"
-											stroke="currentColor"
-											strokeWidth="1.5"
+											cx="12"
+											cy="8"
+											r="4"
+											fill="currentColor"
 										/>
 										<path
-											d="M6 40c0-8.84 7.16-16 16-16s16 7.16 16 16"
-											stroke="currentColor"
-											strokeWidth="1.5"
+											d="M4 20c0-4.42 3.58-8 8-8s8 3.58 8 8"
+											fill="currentColor"
 										/>
 									</svg>
 								</div>
-								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-[#8B6E5B] overflow-hidden flex items-center justify-center">
+								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-[#FFF3E0] overflow-hidden flex items-center justify-center">
 									<svg
-										className="w-full h-full text-white/70"
-										viewBox="0 0 44 44"
+										className="w-6 h-6 text-[#FF9800]"
+										viewBox="0 0 24 24"
 										fill="none"
 									>
 										<circle
-											cx="22"
-											cy="18"
-											r="8"
-											stroke="currentColor"
-											strokeWidth="1.5"
+											cx="12"
+											cy="8"
+											r="4"
+											fill="currentColor"
 										/>
 										<path
-											d="M6 40c0-8.84 7.16-16 16-16s16 7.16 16 16"
-											stroke="currentColor"
-											strokeWidth="1.5"
+											d="M4 20c0-4.42 3.58-8 8-8s8 3.58 8 8"
+											fill="currentColor"
 										/>
 									</svg>
 								</div>
 							</div>
 							<div>
-								<p className="text-sm font-bold text-[#1a1a1a]">10K+ happy</p>
-								<p className="text-sm font-bold text-[#1a1a1a]">members</p>
+								<p className="text-sm font-bold text-[#1a1a1a]">10K+ satisfied</p>
+								<p className="text-sm font-bold text-[#1a1a1a]">client visits</p>
 							</div>
 						</div>
 
