@@ -87,12 +87,12 @@ export default function Navbar() {
   // When over dark bg: light glass overlay, white text
   // When over light bg: dark glass overlay, black text
   const glassClass = isDarkBg ? 'liquid-glass-light' : 'liquid-glass-dark'
-  const textMuted = isDarkBg ? 'text-white/80' : 'text-black/70'
+  const textMuted = isDarkBg ? 'text-white' : 'text-black/70'
   const textHover = isDarkBg ? 'hover:text-white' : 'hover:text-black'
   const hoverBg = isDarkBg ? 'hover:bg-white/10' : 'hover:bg-black/5'
   const activeTabBg = 'bg-[#4d9de0] text-white shadow-sm'
   const callBtnClass = isDarkBg
-    ? 'bg-white/90 text-gray-900 hover:bg-white shadow-md hover:shadow-lg'
+    ? 'bg-white text-black hover:bg-white/90 shadow-md hover:shadow-lg'
     : 'bg-gray-900/90 text-white hover:bg-gray-900 shadow-md hover:shadow-lg'
   const logoColor = isDarkBg ? 'text-white' : 'text-black'
   const mobileToggleColor = isDarkBg ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-black/70 hover:text-black hover:bg-black/5'

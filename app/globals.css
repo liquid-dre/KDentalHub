@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --primary: #005995;
   --brand-blue: #0A6CFF;
   --brand-blue-light: #6FD3FF;
   --brand-navy: #0F172A;
