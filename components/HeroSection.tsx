@@ -100,7 +100,7 @@ export default function HeroSection() {
             <RoundedSlideButton
               href="#contact"
               initialBg="#ffffff"
-              initialText="var(--brand-blue)"
+              initialText="#000000"
               hoverBg="var(--brand-blue)"
               hoverText="#000000"
               hoverScale={1.15}
