@@ -1,8 +1,36 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FeaturesSectionWithHoverEffects } from '@/components/ui/feature-section-with-hover-effects'
 import { CountUp } from '@/components/ui/count-up'
+import { ArrowRight } from 'lucide-react'
+
+// ─── Service card data ──────────────────────────────────────────────────────────
+const SERVICES = [
+  {
+    title: 'Cavity Protection',
+    description:
+      'As we move into this new era of technology, we tend to look at the future with confidence and pride, which is why our theme.',
+    bg: '#FFF0D4',
+    iconPath:
+      'M24 4C18 4 13 8 12 14C11 8 6 4 0 4C0 4 -2 20 12 28C26 20 24 4 24 4Z M10 14V20 M14 14V20',
+  },
+  {
+    title: 'Root Canal Treatment',
+    description:
+      "In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.",
+    bg: '#EDD8FF',
+    iconPath:
+      'M12 2C8 2 5 5 5 9C5 12 7 14 9 16L8 22H16L15 16C17 14 19 12 19 9C19 5 16 2 12 2Z M10 22V26 M14 22V26',
+  },
+  {
+    title: 'Oral Surgery',
+    description:
+      "In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.",
+    bg: '#D4EEFF',
+    iconPath:
+      'M6 2C3 2 1 5 1 9C1 13 4 16 6 18L5 26H11L10 18C12 16 14 13 14 9C14 5 12 2 9 2Z M18 2C15 2 13 5 13 9C13 13 16 16 18 18L17 26H23L22 18C24 16 27 13 27 9C27 5 24 2 21 2Z',
+  },
+]
 
 // ─── Why / stat items ───────────────────────────────────────────────────────────
 const STATS = [
@@ -30,92 +58,268 @@ const TRUST_POINTS = [
   },
 ]
 
+// ─── Sparkle SVG decoration ─────────────────────────────────────────────────────
+function Sparkle({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10 0L10.9 7.5L18 4L12.5 9.1L20 10L12.5 10.9L18 16L10.9 12.5L10 20L9.1 12.5L2 16L7.5 10.9L0 10L7.5 9.1L2 4L9.1 7.5L10 0Z"
+        fill="currentColor"
+        fillOpacity="0.35"
+      />
+    </svg>
+  )
+}
+
+// ─── Tooth Icon SVG ─────────────────────────────────────────────────────────────
+function ToothIcon({ variant }: { variant: 'cavity' | 'rootcanal' | 'surgery' }) {
+  if (variant === 'cavity') {
+    return (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M24 6C18 6 14 10 13 16C12 10 8 6 4 6C4 6 2 24 14 32L12 42H20L18 32C26 28 30 20 30 14C28 8 26 6 24 6Z"
+          stroke="#2D2D2D"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <path
+          d="M34 6C30 6 28 8 26 14C26 20 22 28 30 32L28 42H36L38 32C46 24 44 6 44 6C40 6 36 10 35 16C34 10 34 6 34 6Z"
+          stroke="#2D2D2D"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <circle cx="22" cy="18" r="3" stroke="#2D2D2D" strokeWidth="1.5" fill="none" />
+      </svg>
+    )
+  }
+
+  if (variant === 'rootcanal') {
+    return (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M24 4C18 4 14 8 13 14C12 8 8 4 4 4C4 4 2 22 14 30L12 42H20L18 30C26 26 28 18 28 12C26 6 24 4 24 4Z"
+          stroke="#2D2D2D"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <path
+          d="M36 4C32 4 30 6 28 12C28 18 24 26 32 30L30 42H38L40 30C48 22 46 4 46 4C42 4 38 8 37 14C36 8 36 4 36 4Z"
+          stroke="#2D2D2D"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <path d="M16 30V42" stroke="#2D2D2D" strokeWidth="1.5" strokeDasharray="2 2" />
+        <path d="M34 30V42" stroke="#2D2D2D" strokeWidth="1.5" strokeDasharray="2 2" />
+      </svg>
+    )
+  }
+
+  // surgery - two teeth
+  return (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 4C12 4 9 7 8 12C7 7 4 4 2 4C2 4 0 18 8 24L7 34H13L12 24C18 20 19 14 19 10C18 6 16 4 16 4Z"
+        stroke="#2D2D2D"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <path
+        d="M36 4C32 4 29 7 28 12C27 7 24 4 22 4C22 4 20 18 28 24L27 34H33L32 24C38 20 39 14 39 10C38 6 36 4 36 4Z"
+        stroke="#2D2D2D"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <path d="M40 14L46 14" stroke="#2D2D2D" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M43 11L43 17" stroke="#2D2D2D" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 // ─── Main component ─────────────────────────────────────────────────────────────
 export default function ServicesSection() {
+  const variants = ['cavity', 'rootcanal', 'surgery'] as const
+
   return (
     <>
       {/* ════════════════════════════════════════════════════════════════
-          SERVICES SECTION — Premium Card Grid
+          SERVICES SECTION — Redesigned Card Layout
       ════════════════════════════════════════════════════════════════ */}
-      <section id="services" className="relative bg-[#FAFCFF] py-24 lg:py-32 overflow-hidden">
-        {/* Layered ambient background */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Top gradient wash */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(10,108,255,0.05) 0%, transparent 60%)',
-            }}
-          />
-          {/* Bottom-right warm glow */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'radial-gradient(ellipse 40% 50% at 90% 80%, rgba(124,58,237,0.03) 0%, transparent 60%)',
-            }}
-          />
-          {/* Floating decorative circles */}
-          <div className="absolute top-20 left-[8%] w-64 h-64 rounded-full border border-[#0A6CFF]/[0.04]" />
-          <div className="absolute top-32 left-[10%] w-40 h-40 rounded-full border border-[#6FD3FF]/[0.06]" />
-          <div className="absolute bottom-24 right-[5%] w-80 h-80 rounded-full border border-[#0A6CFF]/[0.03]" />
-          <div className="absolute bottom-40 right-[8%] w-48 h-48 rounded-full border border-[#7C3AED]/[0.04]" />
-          {/* Dot grid texture */}
-          <div
-            className="absolute inset-0 opacity-[0.015]"
-            style={{
-              backgroundImage: 'radial-gradient(circle, #0A6CFF 1px, transparent 1px)',
-              backgroundSize: '32px 32px',
-            }}
-          />
-        </div>
-
+      <section id="services" className="relative bg-[#FAFAFA] py-24 lg:py-32 overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 xl:px-12">
-          {/* ── Section header ── */}
+          {/* ── Section header — left-aligned ── */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-16 lg:mb-20"
+            className="mb-16 lg:mb-20"
           >
-            {/* Pill badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A6CFF]/[0.07] border border-[#0A6CFF]/[0.12] mb-6">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#0A6CFF] animate-pulse-soft" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0A6CFF]">
-                Services We Offer
-              </span>
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[#0F172A] tracking-tight leading-[1.08]">
+              Services We Provide
+              <br />
+              Are Listed Below
+            </h2>
+          </motion.div>
+
+          {/* ── Grid with vertical label ── */}
+          <div className="relative flex gap-6 lg:gap-8">
+            {/* Left column — 2 cards stacked */}
+            <div className="flex-1 flex flex-col gap-6 lg:gap-8">
+              {/* Card 1: Cavity Protection */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                style={{ backgroundColor: SERVICES[0].bg }}
+              >
+                {/* Icon + sparkle */}
+                <div className="flex items-start justify-between">
+                  <div className="w-16 h-16 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center">
+                    <ToothIcon variant="cavity" />
+                  </div>
+                  <Sparkle className="text-[#2D2D2D] mt-2" />
+                </div>
+
+                <div className="mt-auto pt-16">
+                  <h3 className="text-2xl lg:text-[1.7rem] font-bold text-[#1a1a1a] mb-3 tracking-tight">
+                    {SERVICES[0].title}
+                  </h3>
+                  <p className="text-[15px] text-[#555] leading-relaxed mb-6 max-w-sm">
+                    {SERVICES[0].description}
+                  </p>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
+                  >
+                    <span className="border-b border-[#1a1a1a] pb-0.5">Read More</span>
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Card 3: Oral Surgery */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                style={{ backgroundColor: SERVICES[2].bg }}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="w-16 h-16 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center">
+                    <ToothIcon variant="surgery" />
+                  </div>
+                  <Sparkle className="text-[#2D2D2D] mt-2" />
+                </div>
+
+                <div className="mt-auto pt-16">
+                  <h3 className="text-2xl lg:text-[1.7rem] font-bold text-[#1a1a1a] mb-3 tracking-tight">
+                    {SERVICES[2].title}
+                  </h3>
+                  <p className="text-[15px] text-[#555] leading-relaxed mb-6 max-w-sm">
+                    {SERVICES[2].description}
+                  </p>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
+                  >
+                    <span className="border-b border-[#1a1a1a] pb-0.5">Read More</span>
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                  </a>
+                </div>
+              </motion.div>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] xl:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-[1.08] mb-5">
-              Everything your smile{' '}
-              <span
-                className="relative"
-                style={{
-                  background: 'linear-gradient(135deg, #0A6CFF 0%, #6FD3FF 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
+            {/* ── Vertical "our services" label ── */}
+            <div className="hidden lg:flex flex-col items-center justify-center w-12 flex-shrink-0">
+              <div className="flex-1 w-px bg-[#D1D5DB]" />
+              <div
+                className="py-6"
+                style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
               >
-                needs
-              </span>
-            </h2>
-            <p className="text-[15px] text-[#64748B] leading-relaxed max-w-lg mx-auto">
-              Comprehensive dental care for children and families — delivered with kindness, precision, and a genuine smile at every step.
-            </p>
-          </motion.div>
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9CA3AF]">
+                  our services
+                </span>
+              </div>
+              <div className="flex-1 w-px bg-[#D1D5DB]" />
+            </div>
 
-          {/* ── Feature cards grid ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <FeaturesSectionWithHoverEffects />
-          </motion.div>
+            {/* Right column — 2 cards stacked */}
+            <div className="flex-1 flex flex-col gap-6 lg:gap-8">
+              {/* Card 2: Root Canal Treatment */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                style={{ backgroundColor: SERVICES[1].bg }}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="w-16 h-16 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center">
+                    <ToothIcon variant="rootcanal" />
+                  </div>
+                  <Sparkle className="text-[#2D2D2D] mt-2" />
+                </div>
+
+                <div className="mt-auto pt-16">
+                  <h3 className="text-2xl lg:text-[1.7rem] font-bold text-[#1a1a1a] mb-3 tracking-tight">
+                    {SERVICES[1].title}
+                  </h3>
+                  <p className="text-[15px] text-[#555] leading-relaxed mb-6 max-w-sm">
+                    {SERVICES[1].description}
+                  </p>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
+                  >
+                    <span className="border-b border-[#1a1a1a] pb-0.5">Read More</span>
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Card 4: Image card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-[2rem] min-h-[380px] overflow-hidden bg-[#E5E7EB]"
+              >
+                {/* Dental procedure image using available frame */}
+                <img
+                  src="/frames/ezgif-frame-176.jpg"
+                  alt="Dental procedure"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {/* Subtle overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -235,7 +439,7 @@ export default function ServicesSection() {
                 A brighter smile is just<br />one visit away
               </h2>
               <p className="text-[15px] text-white/65 leading-relaxed mb-10 max-w-xl mx-auto">
-                Book your appointment at K Dental Hub and experience dental care that's gentle, modern, and designed around your family's needs.
+                Book your appointment at K Dental Hub and experience dental care that&apos;s gentle, modern, and designed around your family&apos;s needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
