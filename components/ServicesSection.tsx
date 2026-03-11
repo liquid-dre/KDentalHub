@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React, { Dispatch, SetStateAction, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CountUp } from '@/components/ui/count-up'
 import { ArrowRight, ShieldCheck, Syringe, Scissors, Sparkles } from 'lucide-react'
@@ -105,9 +105,146 @@ function OutlineCursor({
   )
 }
 
+// ─── Service showcase data for stacked cards ────────────────────────────────
+interface ServiceShowcase {
+  icon: React.ReactNode
+  title: string
+  description: string
+}
+
+const SERVICE_SHOWCASE: ServiceShowcase[] = [
+  {
+    icon: <ShieldCheck className="w-10 h-10" strokeWidth={1.5} />,
+    title: 'Cavity Protection',
+    description:
+      'Advanced cavity prevention using the latest dental sealants and fluoride treatments. We protect your teeth with thorough examinations and personalized care plans.',
+  },
+  {
+    icon: <Syringe className="w-10 h-10" strokeWidth={1.5} />,
+    title: 'Root Canal Treatment',
+    description:
+      'Pain-free root canal therapy with modern techniques and sedation options. Our specialists ensure comfort while saving your natural teeth from extraction.',
+  },
+  {
+    icon: <Scissors className="w-10 h-10" strokeWidth={1.5} />,
+    title: 'Oral Surgery',
+    description:
+      'Expert oral surgery procedures including wisdom tooth extraction, dental implants, and corrective jaw surgery performed with precision and care.',
+  },
+  {
+    icon: <Sparkles className="w-10 h-10" strokeWidth={1.5} />,
+    title: 'Teeth Whitening',
+    description:
+      'Professional whitening treatments that brighten your smile safely and effectively. Get a radiant, confident smile in just one visit.',
+  },
+  {
+    icon: <ArrowRight className="w-10 h-10" strokeWidth={1.5} />,
+    title: 'Teeth Straightening',
+    description:
+      'Modern orthodontic solutions including clear aligners and traditional braces. Achieve a perfectly aligned smile with our customized treatment plans.',
+  },
+  {
+    icon: <ShieldCheck className="w-10 h-10" strokeWidth={1.5} />,
+    title: 'Dental Implant',
+    description:
+      'Permanent tooth replacement with state-of-the-art implant technology. Restore your smile and chewing function with natural-looking, long-lasting implants.',
+  },
+]
+
+const CARD_COLORS = ['#1a1a1a', '#ffffff', '#1a1a1a', '#ffffff', '#1a1a1a', '#ffffff']
+
+function ServiceSelectBtns({
+  numTracks,
+  setSelected,
+  selected,
+}: {
+  numTracks: number
+  setSelected: Dispatch<SetStateAction<number>>
+  selected: number
+}) {
+  return (
+    <div className="flex gap-1 mt-8">
+      {Array.from(Array(numTracks).keys()).map((n) => (
+        <button
+          key={n}
+          onClick={() => setSelected(n)}
+          className="h-1.5 w-full bg-[#b5c9b6] relative rounded-full overflow-hidden"
+        >
+          {selected === n ? (
+            <motion.span
+              className="absolute top-0 left-0 bottom-0 bg-[#1a1a1a] rounded-full"
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: 5 }}
+              onAnimationComplete={() => {
+                setSelected(selected === numTracks - 1 ? 0 : selected + 1)
+              }}
+            />
+          ) : (
+            <span
+              className="absolute top-0 left-0 bottom-0 bg-[#1a1a1a] rounded-full"
+              style={{ width: selected > n ? '100%' : '0%' }}
+            />
+          )}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function ServiceStackedCards({
+  selected,
+  setSelected,
+}: {
+  selected: number
+  setSelected: Dispatch<SetStateAction<number>>
+}) {
+  return (
+    <div className="relative h-[420px] lg:h-[480px] rounded-3xl overflow-hidden shadow-xl">
+      {SERVICE_SHOWCASE.map((service, i) => {
+        const scale = i <= selected ? 1 : 1 + 0.015 * (i - selected)
+        const offset = i <= selected ? 0 : 95 + (i - selected) * 3
+        const bg = CARD_COLORS[i % CARD_COLORS.length]
+        const textColor = bg === '#1a1a1a' ? '#ffffff' : '#1a1a1a'
+        const subtextColor = bg === '#1a1a1a' ? 'rgba(255,255,255,0.6)' : '#555'
+
+        return (
+          <motion.div
+            key={i}
+            initial={false}
+            style={{
+              zIndex: i,
+              transformOrigin: 'left bottom',
+              background: bg,
+              color: textColor,
+            }}
+            animate={{ x: `${offset}%`, scale }}
+            whileHover={{ translateX: i === selected ? 0 : -3 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            onClick={() => setSelected(i)}
+            className="absolute top-0 left-0 w-full min-h-full p-8 lg:p-12 cursor-pointer flex flex-col justify-between rounded-3xl"
+          >
+            <div style={{ color: textColor, opacity: 0.7 }}>{service.icon}</div>
+            <div>
+              <h3 className="text-2xl lg:text-3xl font-bold mb-4">{service.title}</h3>
+              <p
+                className="text-[15px] lg:text-base leading-relaxed max-w-md"
+                style={{ color: subtextColor }}
+              >
+                &ldquo;{service.description}&rdquo;
+              </p>
+            </div>
+          </motion.div>
+        )
+      })}
+    </div>
+  )
+}
+
 // ─── Main component ─────────────────────────────────────────────────────────────
 export default function ServicesSection() {
   const cursorRef = useRef<HTMLDivElement | null>(null)
+  const [selectedService, setSelectedService] = useState(0)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const el = e.target as HTMLElement
@@ -329,22 +466,44 @@ export default function ServicesSection() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          SERVICES CONTINUATION — Our Works
+          SERVICES CONTINUATION — Our Works + Stacked Cards
       ════════════════════════════════════════════════════════════════ */}
       <section className="bg-[#D6E9D7] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 xl:px-12">
+          {/* Top row: (our works) left + title right */}
+          <div className="flex items-start justify-between mb-14 lg:mb-20">
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-3 text-[13px] text-[#555]"
+            >
+              <span className="font-medium">(our works)</span>
+              <span className="block w-16 h-px bg-[#555]" />
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-[1.08] text-right max-w-md"
+            >
+              Services We Provide
+              <br />
+              Are Listed Below
+            </motion.h2>
+          </div>
+
+          {/* Main content: left text/CTA + right stacked cards */}
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            {/* Left column — text + CTA */}
+            {/* Left column — text + CTA + avatars */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="flex items-center gap-3 text-[13px] text-[#555] mb-8">
-                <span className="font-medium">(our works)</span>
-                <span className="block w-16 h-px bg-[#555]" />
-              </p>
               <p className="text-[15px] text-[#444] leading-relaxed mb-8 max-w-sm">
                 Our team of skilled and experienced dental professionals strives to create a comfortable and welcoming environment for each patient.
               </p>
@@ -383,46 +542,20 @@ export default function ServicesSection() {
                   <p className="text-sm font-bold text-[#1a1a1a]">members</p>
                 </div>
               </div>
+
+              {/* Progress bars */}
+              <ServiceSelectBtns
+                numTracks={SERVICE_SHOWCASE.length}
+                setSelected={setSelectedService}
+                selected={selectedService}
+              />
             </motion.div>
 
-            {/* Right column — service image cards */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="group"
-              >
-                <div className="rounded-3xl overflow-hidden mb-4 aspect-[4/5]">
-                  <img
-                    src="https://images.pexels.com/photos/3845766/pexels-photo-3845766.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt="Teeth Straightening"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">Teeth Straightening</h3>
-                <p className="text-sm text-[#666]">Improve your smile with cleaning.</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="group"
-              >
-                <div className="rounded-3xl overflow-hidden mb-4 aspect-[4/5]">
-                  <img
-                    src="https://images.pexels.com/photos/6627573/pexels-photo-6627573.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt="Dental Implant"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">Dental Implant</h3>
-                <p className="text-sm text-[#666]">Improve your smile with cleaning.</p>
-              </motion.div>
-            </div>
+            {/* Right column — stacked service cards */}
+            <ServiceStackedCards
+              selected={selectedService}
+              setSelected={setSelectedService}
+            />
           </div>
         </div>
       </section>
