@@ -179,7 +179,7 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="outline-card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                className="outline-card group/card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
                 style={{ backgroundColor: SERVICES[0].bg }}
               >
                 {/* Icon + sparkle */}
@@ -202,7 +202,7 @@ export default function ServicesSection() {
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
                   >
                     <span className="border-b border-[#1a1a1a] pb-0.5">Read More</span>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
                   </a>
                 </div>
               </motion.div>
@@ -213,7 +213,7 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="outline-card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                className="outline-card group/card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
                 style={{ backgroundColor: SERVICES[2].bg }}
               >
                 <div className="flex items-start justify-between">
@@ -235,7 +235,7 @@ export default function ServicesSection() {
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
                   >
                     <span className="border-b border-[#1a1a1a] pb-0.5">Read More</span>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
                   </a>
                 </div>
               </motion.div>
@@ -263,7 +263,7 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="outline-card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                className="outline-card group/card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
                 style={{ backgroundColor: SERVICES[1].bg }}
               >
                 <div className="flex items-start justify-between">
@@ -285,7 +285,7 @@ export default function ServicesSection() {
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
                   >
                     <span className="border-b border-[#1a1a1a] pb-0.5">Read More</span>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
                   </a>
                 </div>
               </motion.div>
@@ -296,7 +296,7 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="outline-card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
+                className="outline-card group/card relative rounded-[2rem] p-8 lg:p-10 min-h-[380px] flex flex-col justify-between overflow-hidden"
                 style={{ backgroundColor: SERVICES[3].bg }}
               >
                 <div className="flex items-start justify-between">
@@ -318,7 +318,7 @@ export default function ServicesSection() {
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
                   >
                     <span className="border-b border-[#1a1a1a] pb-0.5">Read More</span>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
                   </a>
                 </div>
               </motion.div>
