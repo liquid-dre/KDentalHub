@@ -115,13 +115,23 @@ export default function Footer() {
         </div>
 
         {/* Large brand text at bottom, clipped */}
-        <div className="mt-12 lg:mt-16 overflow-hidden" style={{ height: 'clamp(80px, 12vw, 150px)' }}>
-          <span
-            className="block font-bold text-white/[0.07] leading-none whitespace-nowrap select-none"
-            style={{ fontSize: 'clamp(90px, 13vw, 180px)' }}
+        <div className="mt-12 lg:mt-16 overflow-hidden">
+          <svg
+            viewBox="0 0 900 120"
+            className="w-full select-none"
+            preserveAspectRatio="xMidYMin meet"
+            aria-hidden="true"
           >
-            K Dental Hub
-          </span>
+            <text
+              x="450"
+              y="105"
+              textAnchor="middle"
+              className="fill-white/[0.07]"
+              style={{ fontSize: '140px', fontWeight: 700, fontFamily: 'inherit' }}
+            >
+              K Dental Hub
+            </text>
+          </svg>
         </div>
       </div>
     </footer>
