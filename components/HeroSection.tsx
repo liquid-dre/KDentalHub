@@ -33,7 +33,7 @@ export default function HeroSection() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base md:text-lg text-white/90 max-w-lg mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl lg:text-2xl text-white/90 max-w-lg mb-10 leading-relaxed">
             Whether it&apos;s a routine check-up or a dental emergency, our
             experienced professionals are just a call away
           </p>

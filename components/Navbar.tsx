@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
@@ -10,71 +10,9 @@ const NAV_LINKS = [
   { label: 'FAQ', href: '#faq' },
 ]
 
-function getLuminance(r: number, g: number, b: number) {
-  const [rs, gs, bs] = [r, g, b].map((c) => {
-    const s = c / 255
-    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4)
-  })
-  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs
-}
-
-function parseColor(color: string): [number, number, number] | null {
-  if (color === 'transparent' || color === 'rgba(0, 0, 0, 0)') return null
-  const match = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/)
-  if (match) return [parseInt(match[1]), parseInt(match[2]), parseInt(match[3])]
-  return null
-}
-
-function getEffectiveBgColor(el: Element | null): [number, number, number] {
-  while (el && el !== document.documentElement) {
-    const bg = getComputedStyle(el).backgroundColor
-    const parsed = parseColor(bg)
-    if (parsed) return parsed
-    el = el.parentElement
-  }
-  return [255, 255, 255] // fallback to white
-}
-
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeLink, setActiveLink] = useState('Home')
-  const [isDarkBg, setIsDarkBg] = useState(true) // assume dark hero initially
-  const headerRef = useRef<HTMLDivElement>(null)
-
-  const detectBackground = useCallback(() => {
-    if (!headerRef.current) return
-    const rect = headerRef.current.getBoundingClientRect()
-    const sampleX = rect.left + rect.width / 2
-    const sampleY = rect.top + rect.height / 2
-
-    // Temporarily hide the navbar to sample what's behind it
-    headerRef.current.style.pointerEvents = 'none'
-    headerRef.current.style.visibility = 'hidden'
-
-    const elBehind = document.elementFromPoint(sampleX, sampleY)
-
-    headerRef.current.style.pointerEvents = ''
-    headerRef.current.style.visibility = ''
-
-    if (elBehind) {
-      const [r, g, b] = getEffectiveBgColor(elBehind)
-      const luminance = getLuminance(r, g, b)
-      // luminance < 0.5 = dark background
-      setIsDarkBg(luminance < 0.5)
-    }
-  }, [])
-
-  useEffect(() => {
-    detectBackground()
-    const handleScroll = () => detectBackground()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    // Also check on load/resize since layout may shift
-    window.addEventListener('resize', detectBackground)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', detectBackground)
-    }
-  }, [detectBackground])
 
   useEffect(() => {
     const handleResize = () => {
@@ -84,38 +22,27 @@ export default function Navbar() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // When over dark bg: light glass overlay, white text
-  // When over light bg: dark glass overlay, black text
-  const glassClass = isDarkBg ? 'liquid-glass-light' : 'liquid-glass-dark'
-  const textMuted = isDarkBg ? 'text-white' : 'text-black/70'
-  const textHover = isDarkBg ? 'hover:text-white' : 'hover:text-black'
-  const hoverBg = isDarkBg ? 'hover:bg-white/10' : 'hover:bg-black/5'
-  const activeTabBg = 'bg-[#4d9de0] text-white shadow-sm'
-  const callBtnClass = isDarkBg
-    ? 'bg-white text-black hover:bg-white/90 shadow-md hover:shadow-lg'
-    : 'bg-gray-900/90 text-white hover:bg-gray-900 shadow-md hover:shadow-lg'
-  const logoColor = isDarkBg ? 'text-white' : 'text-black'
-  const mobileToggleColor = isDarkBg ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-black/70 hover:text-black hover:bg-black/5'
-
   return (
     <>
       <motion.header
-        ref={headerRef}
-        className="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-8 transition-colors duration-500"
+        className="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-8"
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
-        <nav className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo - Extreme Left */}
+        {/* Dark gradient overlay for consistent readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent pointer-events-none" />
+
+        <nav className="relative max-w-7xl mx-auto flex items-center justify-between">
+          {/* Logo */}
           <a href="#" className="flex-shrink-0 group">
-            <span className={`font-extrabold text-2xl md:text-3xl tracking-tight drop-shadow-lg transition-colors duration-500 ${logoColor}`}>
+            <span className="font-extrabold text-2xl md:text-3xl tracking-tight drop-shadow-lg text-white">
               Dental Hub
             </span>
           </a>
 
-          {/* Center - Liquid Glass Nav Pill */}
-          <div className={`hidden md:flex items-center ${glassClass} rounded-full px-2 py-1.5 transition-all duration-500`}>
+          {/* Center - Glass Nav Pill */}
+          <div className="hidden md:flex items-center liquid-glass-light rounded-full px-2 py-1.5">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
@@ -123,8 +50,8 @@ export default function Navbar() {
                 onClick={() => setActiveLink(link.label)}
                 className={`relative px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
                   activeLink === link.label
-                    ? activeTabBg
-                    : `${textMuted} ${textHover} ${hoverBg}`
+                    ? 'bg-[#4d9de0] text-white shadow-sm'
+                    : 'text-white hover:text-white hover:bg-white/10'
                 }`}
               >
                 {link.label}
@@ -132,11 +59,11 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right - Book an Appointment Pill Button */}
+          {/* Right - Book an Appointment */}
           <div className="hidden md:block flex-shrink-0">
             <a
               href="#contact"
-              className={`inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full backdrop-blur-sm text-sm font-semibold active:scale-[0.97] transition-all duration-500 ${callBtnClass}`}
+              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full backdrop-blur-sm text-sm font-semibold active:scale-[0.97] transition-all duration-200 bg-white text-black hover:bg-white/90 shadow-md hover:shadow-lg"
             >
               <svg
                 width="16"
@@ -157,7 +84,7 @@ export default function Navbar() {
 
           {/* Mobile menu toggle */}
           <button
-            className={`md:hidden p-2 rounded-lg transition-colors duration-500 ${mobileToggleColor}`}
+            className="md:hidden p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation"
           >
@@ -184,7 +111,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className={`fixed top-[72px] left-4 right-4 z-40 md:hidden ${glassClass} rounded-2xl shadow-2xl transition-all duration-500`}
+            className="fixed top-[72px] left-4 right-4 z-40 md:hidden liquid-glass-light rounded-2xl shadow-2xl"
           >
             <ul className="px-4 py-3 space-y-1">
               {NAV_LINKS.map((link) => (
@@ -193,8 +120,8 @@ export default function Navbar() {
                     href={link.href}
                     className={`block px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
                       activeLink === link.label
-                        ? activeTabBg
-                        : `${textMuted} ${textHover} ${hoverBg}`
+                        ? 'bg-[#4d9de0] text-white shadow-sm'
+                        : 'text-white hover:text-white hover:bg-white/10'
                     }`}
                     onClick={() => {
                       setActiveLink(link.label)
@@ -208,7 +135,7 @@ export default function Navbar() {
               <li className="pt-2 pb-1">
                 <a
                   href="#contact"
-                  className={`flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-semibold transition-all duration-500 ${callBtnClass}`}
+                  className="flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-semibold bg-white text-black hover:bg-white/90 shadow-md hover:shadow-lg"
                   onClick={() => setMobileOpen(false)}
                 >
                   <svg
