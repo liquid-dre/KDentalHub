@@ -247,7 +247,7 @@ export default function ServicesCarousel() {
 							patient.
 						</p>
 						<RoundedSlideButton
-							href={`/contact?service=${encodeURIComponent(SERVICE_SHOWCASE[selectedService].title)}`}
+							href={`/booking?service=${encodeURIComponent(SERVICE_SHOWCASE[selectedService].title)}`}
 							initialBg="#ffffff"
 							initialText="#000000"
 							hoverBg="var(--brand-blue)"

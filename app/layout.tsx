@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
+import { LocalBusinessSchema } from '@/components/StructuredData'
 
 const font = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -10,14 +11,67 @@ const font = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'K Dental Hub — Bright Smiles, Gentle Care',
+  title: {
+    default: 'K Dental Hub — Bright Smiles, Gentle Care',
+    template: '%s | K Dental Hub',
+  },
   description:
-    'Premium dental care for children and families. Modern, child-friendly, and trusted. Book your appointment at K Dental Hub today.',
-  keywords: ['dental', 'dentist', 'children dentist', 'family dental', 'dental care', 'K Dental Hub'],
+    'Premium dental care for children and families in New York. Modern, child-friendly dental clinic offering cavity protection, root canals, teeth whitening, implants, and more. Book your appointment today.',
+  keywords: [
+    'dentist',
+    'dental care',
+    'family dentist',
+    'children dentist',
+    'pediatric dentistry',
+    'teeth whitening',
+    'dental implants',
+    'root canal',
+    'dental checkup',
+    'New York dentist',
+    'K Dental Hub',
+  ],
+  authors: [{ name: 'K Dental Hub' }],
+  creator: 'K Dental Hub',
+  metadataBase: new URL('https://kdentalhub.com'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'K Dental Hub — Bright Smiles, Gentle Care',
-    description: 'Premium dental care for children and families.',
+    description:
+      'Premium dental care for children and families. Modern, child-friendly, and trusted. Book your appointment today.',
     type: 'website',
+    locale: 'en_US',
+    url: 'https://kdentalhub.com',
+    siteName: 'K Dental Hub',
+    images: [
+      {
+        url: 'https://images.pexels.com/photos/6502552/pexels-photo-6502552.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        width: 1200,
+        height: 630,
+        alt: 'K Dental Hub — Modern Dental Care',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'K Dental Hub — Bright Smiles, Gentle Care',
+    description:
+      'Premium dental care for children and families. Book your appointment today.',
+    images: [
+      'https://images.pexels.com/photos/6502552/pexels-photo-6502552.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 }
 
@@ -28,6 +82,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={font.variable}>
+      <head>
+        <LocalBusinessSchema />
+      </head>
       <body className="font-sans bg-white text-[#0F172A] antialiased overflow-x-hidden">
         {children}
       </body>
