@@ -37,7 +37,7 @@ export default function ServiceDropdown({
         initial={wrapperVariants.closed}
         variants={wrapperVariants}
         style={{ originY: "top" }}
-        className="flex flex-col gap-1 p-2 rounded-lg bg-white shadow-xl absolute top-[120%] left-0 w-full z-50 overflow-hidden"
+        className="flex flex-col gap-1 p-2 rounded-lg bg-white shadow-xl absolute top-[120%] left-0 w-full z-50 overflow-y-auto max-h-60"
       >
         {SERVICES.map((service) => (
           <Option
