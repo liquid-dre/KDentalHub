@@ -15,7 +15,7 @@ export default function HeroSection() {
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/60" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-end h-full px-8 md:px-16 lg:px-24 pb-20 md:pb-28">
@@ -29,11 +29,11 @@ export default function HeroSection() {
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
             Seamless
             <br />
-            Dental <span className="inline-block">🦷</span> Care
+            Dental <span className="inline-block">🦷</span> <span className="text-[#4d9de0]">Care</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base md:text-lg text-white/80 max-w-lg mb-10 leading-relaxed">
+          <p className="text-base md:text-lg text-white/90 max-w-lg mb-10 leading-relaxed">
             Whether it&apos;s a routine check-up or a dental emergency, our
             experienced professionals are just a call away
           </p>
