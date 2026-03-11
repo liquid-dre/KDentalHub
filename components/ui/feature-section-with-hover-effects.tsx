@@ -297,7 +297,7 @@ const FeatureCard = ({
               {/* Front CTA */}
               <div className="mt-5">
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="group/cta relative flex items-center justify-between rounded-xl px-4 py-3 transition-all duration-300 cursor-pointer hover:scale-[1.02]"
                   style={{
                     backgroundColor: accentLight,
@@ -382,7 +382,7 @@ const FeatureCard = ({
               {/* Back CTA */}
               <div className="mt-5 pt-4" style={{ borderTop: `1px solid ${accent}15` }}>
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="group/cta relative flex items-center justify-between rounded-xl px-4 py-3 transition-all duration-300 cursor-pointer hover:scale-[1.02]"
                   style={{
                     backgroundColor: accent,

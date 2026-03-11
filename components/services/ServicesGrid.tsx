@@ -170,11 +170,11 @@ export default function ServicesGrid() {
 										{SERVICES[0].description}
 									</p>
 									<a
-										href="#contact"
+										href={`/contact?service=${encodeURIComponent(SERVICES[0].title)}`}
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Read More
+											Enquire About Service
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>
@@ -212,11 +212,11 @@ export default function ServicesGrid() {
 										{SERVICES[2].description}
 									</p>
 									<a
-										href="#contact"
+										href={`/contact?service=${encodeURIComponent(SERVICES[2].title)}`}
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Read More
+											Enquire About Service
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>
@@ -271,11 +271,11 @@ export default function ServicesGrid() {
 										{SERVICES[1].description}
 									</p>
 									<a
-										href="#contact"
+										href={`/contact?service=${encodeURIComponent(SERVICES[1].title)}`}
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Read More
+											Enquire About Service
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>
@@ -313,11 +313,11 @@ export default function ServicesGrid() {
 										{SERVICES[3].description}
 									</p>
 									<a
-										href="#contact"
+										href={`/contact?service=${encodeURIComponent(SERVICES[3].title)}`}
 										className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] group/link"
 									>
 										<span className="border-b border-[#1a1a1a] pb-0.5">
-											Read More
+											Enquire About Service
 										</span>
 										<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-2" />
 									</a>

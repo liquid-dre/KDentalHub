@@ -247,7 +247,7 @@ export default function ServicesCarousel() {
 							patient.
 						</p>
 						<RoundedSlideButton
-							href="#contact"
+							href={`/contact?service=${encodeURIComponent(SERVICE_SHOWCASE[selectedService].title)}`}
 							initialBg="#ffffff"
 							initialText="#000000"
 							hoverBg="var(--brand-blue)"
@@ -258,73 +258,49 @@ export default function ServicesCarousel() {
 							<ArrowRight className="w-4 h-4" />
 						</RoundedSlideButton>
 
-						{/* Member avatars */}
+						{/* Client avatars */}
 						<div className="flex items-center gap-4 mt-12">
 							<div className="flex -space-x-3">
-								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white/60 overflow-hidden">
+								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white overflow-hidden flex items-center justify-center">
 									<svg
-										className="w-full h-full text-[#bbb]"
-										viewBox="0 0 44 44"
+										className="w-7 h-7"
+										viewBox="0 0 24 24"
 										fill="none"
 									>
-										<circle
-											cx="22"
-											cy="18"
-											r="8"
-											stroke="currentColor"
-											strokeWidth="1.5"
-										/>
-										<path
-											d="M6 40c0-8.84 7.16-16 16-16s16 7.16 16 16"
-											stroke="currentColor"
-											strokeWidth="1.5"
-										/>
+										<circle cx="9" cy="7" r="3" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M2 19c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+										<circle cx="16" cy="9" r="2.5" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M16 13.5c2.76 0 5 2.24 5 5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
 									</svg>
 								</div>
-								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white/60 overflow-hidden">
+								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white overflow-hidden flex items-center justify-center">
 									<svg
-										className="w-full h-full text-[#bbb]"
-										viewBox="0 0 44 44"
+										className="w-7 h-7"
+										viewBox="0 0 24 24"
 										fill="none"
 									>
-										<circle
-											cx="22"
-											cy="18"
-											r="8"
-											stroke="currentColor"
-											strokeWidth="1.5"
-										/>
-										<path
-											d="M6 40c0-8.84 7.16-16 16-16s16 7.16 16 16"
-											stroke="currentColor"
-											strokeWidth="1.5"
-										/>
+										<circle cx="9" cy="7" r="3" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M2 19c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+										<circle cx="16" cy="9" r="2.5" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M16 13.5c2.76 0 5 2.24 5 5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
 									</svg>
 								</div>
-								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-[#8B6E5B] overflow-hidden flex items-center justify-center">
+								<div className="w-11 h-11 rounded-full border-2 border-[#D6E9D7] bg-white overflow-hidden flex items-center justify-center">
 									<svg
-										className="w-full h-full text-white/70"
-										viewBox="0 0 44 44"
+										className="w-7 h-7"
+										viewBox="0 0 24 24"
 										fill="none"
 									>
-										<circle
-											cx="22"
-											cy="18"
-											r="8"
-											stroke="currentColor"
-											strokeWidth="1.5"
-										/>
-										<path
-											d="M6 40c0-8.84 7.16-16 16-16s16 7.16 16 16"
-											stroke="currentColor"
-											strokeWidth="1.5"
-										/>
+										<circle cx="9" cy="7" r="3" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M2 19c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+										<circle cx="16" cy="9" r="2.5" stroke="#1a1a1a" strokeWidth="1.5" />
+										<path d="M16 13.5c2.76 0 5 2.24 5 5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
 									</svg>
 								</div>
 							</div>
 							<div>
-								<p className="text-sm font-bold text-[#1a1a1a]">10K+ happy</p>
-								<p className="text-sm font-bold text-[#1a1a1a]">members</p>
+								<p className="text-sm font-bold text-[#1a1a1a]">10K+ satisfied</p>
+								<p className="text-sm font-bold text-[#1a1a1a]">client visits</p>
 							</div>
 						</div>
 
