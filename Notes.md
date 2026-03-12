@@ -95,3 +95,53 @@ analytics.serviceViewed('Teeth Whitening')
 import { trackEvent } from '@/lib/analytics'
 trackEvent({ action: 'my_event', category: 'my_category', label: 'details' })
 ```
+
+---
+
+## SEO — Ranking for Dentists in Zimbabwe
+
+The site's SEO has been geo-targeted to **Harare, Zimbabwe**. Here's how to check your rankings and improve them.
+
+### How to Check SEO Rankings
+
+#### 1. Google Search Console (Free — Essential)
+1. Go to [Google Search Console](https://search.google.com/search-console).
+2. Verify ownership of `kdentalhub.com`.
+3. Submit your sitemap: `https://kdentalhub.com/sitemap.xml`.
+4. Check the **Performance** tab to see what queries you rank for, your average position, and click-through rates.
+5. Filter by **Country → Zimbabwe** to see local performance.
+
+#### 2. Manual Search Checks
+- Use **incognito mode** + a **Zimbabwe VPN** and search for:
+  - `dentist zimbabwe`
+  - `dental clinic harare`
+  - `best dentist in zimbabwe`
+  - `dental implants zimbabwe`
+  - `teeth whitening harare`
+
+#### 3. Free Rank Tracking Tools
+- **Google Search Console** — real ranking data from Google itself
+- **Ubersuggest** (neilpatel.com) — limited free keyword checks
+- **Ahrefs Webmaster Tools** — free site audit + some rank data
+
+#### 4. Check GA4 for Zimbabwe Traffic
+In Google Analytics, go to **Reports → Acquisition → Traffic acquisition** and filter by country to see traffic from Zimbabwe. Custom events like `service_viewed` and `booking_started` will show engagement.
+
+### What's Currently Configured
+
+| File | What's Set |
+|---|---|
+| `app/layout.tsx` | Meta description mentions Zimbabwe; keywords include "dentist Zimbabwe", "dentist Harare", "best dentist in Zimbabwe", etc. |
+| `components/StructuredData.tsx` | Schema.org `Dentist` type with Harare address, Zimbabwe country code (ZW), Harare geo-coordinates, area served = Zimbabwe |
+| `components/LocationSection.tsx` | Display address, phone numbers, and Google Maps embed all set to Harare, Zimbabwe |
+| `app/sitemap.ts` | Dynamic sitemap generation (submit to Google Search Console) |
+| `app/robots.ts` | Allows all crawlers, references sitemap |
+
+### Next Steps to Rank Higher
+
+1. **Google Business Profile** — Register your clinic on Google Maps at [business.google.com](https://business.google.com). This is critical for appearing in the local map pack.
+2. **Replace placeholder data** — Update the Harare address (`123 Samora Machel Avenue`), phone number (`+263 242 123 456`), and map coordinates with your real details.
+3. **Create Zimbabwe-specific content** — Blog posts targeting local keywords (e.g., "Best dental care in Harare", "Dental implant costs in Zimbabwe").
+4. **Get local backlinks** — List your clinic on Zimbabwe business directories and health directories.
+5. **Add `hreflang` tags** if you plan to serve multiple countries/regions.
+6. **Build reviews** — Encourage patients to leave Google reviews, which boost local rankings.

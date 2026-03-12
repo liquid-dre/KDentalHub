@@ -52,7 +52,7 @@ export default function LocationSection() {
             className="rounded-2xl overflow-hidden shadow-lg h-[400px] lg:h-full min-h-[400px]"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076794379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1234567890!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30261.58099588258!2d31.0300!3d-17.8292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a4e706aaaaab%3A0x589e3a4e6f120c20!2sHarare%2C%20Zimbabwe!5e0!3m2!1sen!2szw"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -83,19 +83,19 @@ export default function LocationSection() {
                 </h3>
               </div>
               <p className="text-[15px] text-[#475569] leading-relaxed mb-4">
-                123 Dental Care Boulevard
+                123 Samora Machel Avenue
                 <br />
-                Suite 200, Medical District
+                Harare
                 <br />
-                New York, NY 10001
+                Zimbabwe
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+263242123456"
                   className="inline-flex items-center gap-2 text-sm font-medium text-[#0A6CFF] hover:text-[#0856cc] transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  (123) 456-7890
+                  +263 242 123 456
                 </a>
                 <a
                   href="mailto:hello@kdentalhub.com"
@@ -160,11 +160,11 @@ export default function LocationSection() {
                 Call our emergency line for immediate assistance.
               </p>
               <a
-                href="tel:+1234567890"
+                href="tel:+263242123456"
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-[#0A6CFF] rounded-full text-sm font-bold hover:bg-white/90 transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                (123) 456-7890
+                +263 242 123 456
               </a>
             </div>
           </motion.div>

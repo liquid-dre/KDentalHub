@@ -6,20 +6,20 @@ export function LocalBusinessSchema() {
     description:
       "Premium dental care for children and families. Modern, child-friendly, and trusted dental clinic offering comprehensive dental services.",
     url: "https://kdentalhub.com",
-    telephone: "+1-123-456-7890",
+    telephone: "+263-242-123-456",
     email: "hello@kdentalhub.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "123 Dental Care Boulevard, Suite 200",
-      addressLocality: "New York",
-      addressRegion: "NY",
-      postalCode: "10001",
-      addressCountry: "US",
+      streetAddress: "123 Samora Machel Avenue",
+      addressLocality: "Harare",
+      addressRegion: "Harare Province",
+      postalCode: "",
+      addressCountry: "ZW",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 40.7407679,
-      longitude: -74.0042587,
+      latitude: -17.8292,
+      longitude: 31.0522,
     },
     openingHoursSpecification: [
       {
@@ -202,8 +202,8 @@ export function ServiceSchema({
       url: "https://kdentalhub.com",
     },
     areaServed: {
-      "@type": "City",
-      name: "New York",
+      "@type": "Country",
+      name: "Zimbabwe",
     },
     offers: {
       "@type": "Offer",
