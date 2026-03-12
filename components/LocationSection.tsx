@@ -91,11 +91,11 @@ export default function LocationSection() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="tel:+263242123456"
+                  href="tel:+263772242592"
                   className="inline-flex items-center gap-2 text-sm font-medium text-[#0A6CFF] hover:text-[#0856cc] transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  +263 242 123 456
+                  +263 772 242 592
                 </a>
                 <a
                   href="mailto:hello@kdentalhub.com"
@@ -160,11 +160,11 @@ export default function LocationSection() {
                 Call our emergency line for immediate assistance.
               </p>
               <a
-                href="tel:+263242123456"
+                href="tel:+263772242592"
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-[#0A6CFF] rounded-full text-sm font-bold hover:bg-white/90 transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                +263 242 123 456
+                +263 772 242 592
               </a>
             </div>
           </motion.div>

@@ -6,7 +6,7 @@ export function LocalBusinessSchema() {
     description:
       "Premium dental care for children and families. Modern, child-friendly, and trusted dental clinic offering comprehensive dental services.",
     url: "https://kdentalhub.com",
-    telephone: "+263-242-123-456",
+    telephone: "+263-772-242-592",
     email: "hello@kdentalhub.com",
     address: {
       "@type": "PostalAddress",
