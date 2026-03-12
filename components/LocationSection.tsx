@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import { MapPin, Clock, Phone, Mail } from "lucide-react";
 
 const OFFICE_HOURS = [
-  { day: "Monday", hours: "9:00 AM – 6:00 PM" },
-  { day: "Tuesday", hours: "9:00 AM – 6:00 PM" },
-  { day: "Wednesday", hours: "9:00 AM – 7:00 PM" },
-  { day: "Thursday", hours: "9:00 AM – 6:00 PM" },
-  { day: "Friday", hours: "9:00 AM – 5:00 PM" },
-  { day: "Saturday", hours: "10:00 AM – 3:00 PM" },
-  { day: "Sunday", hours: "Closed" },
+  { day: "Monday", hours: "8:00 AM – 4:30 PM" },
+  { day: "Tuesday", hours: "8:00 AM – 4:30 PM" },
+  { day: "Wednesday", hours: "8:00 AM – 4:30 PM" },
+  { day: "Thursday", hours: "8:00 AM – 4:30 PM" },
+  { day: "Friday", hours: "8:00 AM – 4:30 PM" },
+  { day: "Saturday", hours: "Closed" },
+  { day: "Sunday", hours: "8:00 AM – 12:30 PM" },
 ];
 
 function getCurrentDay(): string {
@@ -52,7 +52,7 @@ export default function LocationSection() {
             className="rounded-2xl overflow-hidden shadow-lg h-[400px] lg:h-full min-h-[400px]"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30261.58099588258!2d31.0300!3d-17.8292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a4e706aaaaab%3A0x589e3a4e6f120c20!2sHarare%2C%20Zimbabwe!5e0!3m2!1sen!2szw"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.337232970642!2d31.044338800000002!3d-17.7758411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931af8388578309%3A0xf29d531a59bf0deb!2sK%20Dental%20hub!5e0!3m2!1sen!2szw!4v1773323340372!5m2!1sen!2szw"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -83,7 +83,7 @@ export default function LocationSection() {
                 </h3>
               </div>
               <p className="text-[15px] text-[#475569] leading-relaxed mb-4">
-                123 Samora Machel Avenue
+                218 Upper E Rd
                 <br />
                 Harare
                 <br />
