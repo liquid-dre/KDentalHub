@@ -122,7 +122,7 @@ export default function Navbar() {
                     className={`block px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
                       activeLink === link.label
                         ? 'bg-[#4d9de0] text-white shadow-sm'
-                        : 'text-white hover:text-white hover:bg-white/10'
+                        : 'text-black hover:text-black hover:bg-black/5'
                     }`}
                     onClick={() => {
                       setActiveLink(link.label)
