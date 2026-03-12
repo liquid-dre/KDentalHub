@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import ServiceDropdown from "@/components/ServiceDropdown";
 import { SERVICES, type ServiceName } from "@/components/services/services";
+import { analytics } from "@/lib/analytics";
 
 const TIME_SLOTS = [
   "9:00 AM",
@@ -153,6 +154,7 @@ export default function BookingPage() {
   };
 
   const handleSubmit = () => {
+    analytics.bookingSubmitted(service);
     setSubmitted(true);
   };
 
@@ -658,7 +660,10 @@ export default function BookingPage() {
 
               {step < 3 ? (
                 <button
-                  onClick={() => setStep(step + 1)}
+                  onClick={() => {
+                    analytics.bookingStepCompleted(STEPS[step]);
+                    setStep(step + 1);
+                  }}
                   disabled={!canGoNext()}
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0A6CFF] text-white text-sm font-semibold hover:bg-[#0856cc] disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-[0.97]"
                 >
