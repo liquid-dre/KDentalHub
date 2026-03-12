@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import ServiceDropdown from "@/components/ServiceDropdown";
@@ -16,6 +16,14 @@ function getInitialService(param: string | null): ServiceName | "" {
 }
 
 export default function ContactPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#F0F8FF]" />}>
+      <ContactPageContent />
+    </Suspense>
+  );
+}
+
+function ContactPageContent() {
   const [selected, setSelected] = useState<"new" | "existing">("new");
   const searchParams = useSearchParams();
   const [service, setService] = useState<ServiceName | "">(() =>

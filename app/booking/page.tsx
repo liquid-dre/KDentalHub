@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -70,6 +70,14 @@ const MONTH_NAMES = [
 const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function BookingPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#F0F8FF]" />}>
+      <BookingPageContent />
+    </Suspense>
+  );
+}
+
+function BookingPageContent() {
   const searchParams = useSearchParams();
   const [step, setStep] = useState(0);
   const [service, setService] = useState<ServiceName | "">(() =>
