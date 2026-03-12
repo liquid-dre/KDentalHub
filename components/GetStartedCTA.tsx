@@ -41,7 +41,7 @@ export default function GetStartedCTA() {
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 							<a
-								href="tel:+1234567890"
+								href="tel:+263772242592"
 								onClick={() => analytics.phoneClicked()}
 								className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-[#0A6CFF] text-sm font-bold hover:bg-[#F0F8FF] active:scale-[0.98] transition-all duration-200 shadow-[0_4px_24px_rgba(0,0,0,0.15)]"
 							>
