@@ -77,7 +77,7 @@ const Question = ({
   defaultOpen = false,
 }: {
   title: string;
-  children: JSX.Element;
+  children: React.ReactNode;
   defaultOpen?: boolean;
 }) => {
   const [ref, { height }] = useMeasure();

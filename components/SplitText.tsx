@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useState, useMemo } from 'react'
+import React, { useRef, useEffect, useState, useMemo } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 interface SplitTextProps {
@@ -15,7 +15,7 @@ interface SplitTextProps {
   threshold?: number
   rootMargin?: string
   textAlign?: 'left' | 'center' | 'right'
-  tag?: keyof JSX.IntrinsicElements
+  tag?: keyof React.JSX.IntrinsicElements
   onLetterAnimationComplete?: () => void
   showCallback?: boolean
 }
