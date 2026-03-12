@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import ServiceDropdown from "@/components/ServiceDropdown";
 import { SERVICES, type ServiceName } from "@/components/services/services";
+import { analytics } from "@/lib/analytics";
 
 const BASE_TRANSITION = { ease: "anticipate", duration: 0.75 };
 
@@ -77,7 +78,10 @@ function Form({
 
   return (
     <form
-      onSubmit={(e) => e.preventDefault()}
+      onSubmit={(e) => {
+        e.preventDefault();
+        analytics.contactFormSubmitted();
+      }}
       className={`p-8 w-full text-white transition-colors duration-[750ms] ${
         selected === "existing" ? "bg-[#0A6CFF]" : "bg-[#0856cc]"
       }`}

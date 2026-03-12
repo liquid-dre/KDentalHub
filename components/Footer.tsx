@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { analytics } from '@/lib/analytics'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#' },
@@ -52,6 +53,7 @@ export default function Footer() {
               />
               <button
                 aria-label="Subscribe"
+                onClick={() => analytics.newsletterSubscribed()}
                 className="absolute right-0 bottom-3 text-white/70 hover:text-white transition-colors"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

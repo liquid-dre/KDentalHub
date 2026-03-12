@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import { LocalBusinessSchema } from '@/components/StructuredData'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 
 const font = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -87,6 +90,9 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-white text-[#0F172A] antialiased overflow-x-hidden">
         {children}
+        <Analytics />
+        <SpeedInsights />
+        <GoogleAnalytics />
       </body>
     </html>
   )
